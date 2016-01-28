@@ -1,7 +1,8 @@
 # Site settings
-title: > Davide Reppucci | Team leader, Technical project manager, Front-end developer
+title: Davide Reppucci | Team leader - Technical project manager - Front-end developer
 email: davide.reppucci@gmail.com
-description: > Davide Reppucci has 10 years of experience in front-end development and now can easily manage a project matching business, design and technical needs in a final high-quality solution.
+description: > Davide Reppucci has 10 years of experience in front-end development and now can easily manage a project matching business,
+design and technical needs in a final high-quality solution.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://dreppucci.github.io" # the base hostname & protocol for your site
 twitter_username: davidereppucci
