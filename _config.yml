@@ -1,11 +1,18 @@
 # Site settings
-title: Davide Reppucci | Team leader - Technical project manager - Front-end developer
-email: davide.reppucci@gmail.com
-description: Write an awesome description for your new site here. You can edit this
+title: "Davide Reppucci | Team leader, technical project manager, front-end developer"
+email: "davide.reppucci@gmail.com"
+description: "Davide Reppucci has 10 years of experience in front-end development and can easily handle a project combining business, design and technical requirements in a final high-quality solution."
+keywords: "front-end, project management, development, techical project manager, team leader, css, html5, javascript"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://dreppucci.github.io" # the base hostname & protocol for your site
-twitter_username: davidereppucci
-github_username:  dreppucci
+twitter_username: "davidereppucci"
+github_username:  "dreppucci"
+permalink: pretty
+collections:
+  works:
+    output: true
+    permalink: /works/:path/
 
 # Build settings
-markdown: kramdown
+markdown: "kramdown"
+include: ['.htaccess']
