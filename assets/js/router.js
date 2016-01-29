@@ -25,11 +25,16 @@ define([
 
       routes: {
           '': 'getHome',
+          'home': 'getHome',
+          'home/': 'getHome',
           'about': 'getAbout',
+          'about/': 'getAbout',
           'works': 'getWorksList',
+          'works/': 'getWorksList',
           'works/:id': 'getWorksList',
           'works/:id/detail': 'getWorkDetail',
           'contact': 'getContact',
+          'contact/': 'getContact',
           '*notFound': 'notFound'
       },
 
@@ -73,7 +78,7 @@ define([
       },
 
       notFound : function() {
-        this.navigate('');
+        this.navigate('home', { trigger: true });
       },
 
       controller : function( view, detail ) {

@@ -37,6 +37,7 @@ define([
 			TweenMax.to( this.$el.find('.content p:eq(0)'), this.model.get('tweenAnimDuration'), { delay: .6, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
 
 			this.showSkill();
+			
 			$(window).on('resize', _.bind( function() { this.resizeSkill(); }, this ) );
 			$(window).trigger('resize');
 		},

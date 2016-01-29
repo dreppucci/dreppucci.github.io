@@ -12,10 +12,12 @@
 					<ul class="clearfix">
 					{% for node in site.pages %}
 						{% if node.title %}
-							{% if page.url == node.url %}
-							<li><a class="active" href="{{ node.url | prepend: site.baseurl }}" title="{{node.title}}" data-behavior="internal">{{ node.title }}</a></li>
-							{% else %}
-							<li><a href="{{ node.url | prepend: site.baseurl }}" title="{{node.title}}">{{ node.title }}</a></li>
+							{% if node.title != 'Home' %}
+								{% if page.url == node.url %}
+								<li><a class="active" href="/{{ node.url | prepend: site.baseurl | replace: '/', '' }}" title="{{node.title}}" data-behavior="internal">{{ node.title }}</a></li>
+								{% else %}
+								<li><a href="/{{ node.url | prepend: site.baseurl | replace: '/', '' }}" title="{{node.title}}">{{ node.title }}</a></li>
+								{% endif %}
 							{% endif %}
 						{% endif %}
 					{% endfor %}

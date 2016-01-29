@@ -10,8 +10,6 @@ define([
 	
 	var HomeView = PageView.extend({
 
-		className: 'home-view page-view clearfix',
-
 		initialize : function () {
 			var template = _.template(HomeTemplate);
 		    this.$el.prepend(template);

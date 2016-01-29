@@ -18,14 +18,16 @@ define([
 
 		pageNavigation : function(event) {
 			if( !$(event.currentTarget).hasClass('active') ) {
-				href = $(event.currentTarget).attr('href');
+				var href = $(event.currentTarget).attr('href'),
+					url = href.replace(/^\//,'').replace('\#\!\/','');
+					
 				if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) event.preventDefault();
-				url = href.replace(/^\//,'').replace('\#\!\/','');
+
 				$('#bt-menu').removeClass('bt-menu-open');
 				$('header, .page-view').removeClass('open');
-				Backbone.history.navigate(url, {trigger: true });
+
+				Backbone.history.navigate(url, { trigger: true });
 			}
-			return false;
 		}
 
 	});
