@@ -508,7 +508,6 @@ IScroll.prototype = {
 		}
 
 		this.moved = true;
-		this._execEvent('scroll');
 
 		this._translate(newX, newY);
 
@@ -519,7 +518,7 @@ IScroll.prototype = {
 			this.startX = this.x;
 			this.startY = this.y;
 		}
-		
+
 /* REPLACE END: _move */
 
 	},
@@ -1116,7 +1115,7 @@ IScroll.prototype = {
 		} else if ( newY < this.maxScrollY ) {
 			newY = this.maxScrollY;
 		}
-		this._execEvent('scroll');
+
 		this.scrollTo(newX, newY, 0);
 
 // INSERT POINT: _wheel
@@ -1507,7 +1506,7 @@ IScroll.prototype = {
 			if ( now >= destTime ) {
 				that.isAnimating = false;
 				that._translate(destX, destY);
-				that._execEvent('scroll');
+
 				if ( !that.resetPosition(that.options.bounceTime) ) {
 					that._execEvent('scrollEnd');
 				}
@@ -1803,7 +1802,6 @@ Indicator.prototype = {
 		}
 
 		if ( this.moved ) {
-			this.scroll._execEvent('scroll');
 			this.scroller._execEvent('scrollEnd');
 		}
 	},

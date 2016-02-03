@@ -4,15 +4,14 @@ define([
   'backbone',
   'views/PageView',
   'views/LoaderView',
-  'text!templates/home.php'
+  'text!../../../index.html'
 
 ], function ($, _, Backbone, PageView, LoaderView, HomeTemplate) {
 	
 	var HomeView = PageView.extend({
 
 		initialize : function () {
-			var template = _.template(HomeTemplate);
-		    this.$el.prepend(template);
+			this.$el.prepend($(HomeTemplate).find('.page-view').html());
 		    this.model.set({ 'title': 'Home' });
 		},
 

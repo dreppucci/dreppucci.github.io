@@ -5,23 +5,22 @@ define([
   'iscroll',
   'dragdealer',
   'views/PageView',
-  'views/LoaderView',
-  'text!templates/work-detail.php'
+  'views/LoaderView'
 
-], function ($, _, Backbone, IScroll, Dragdealer, PageView, LoaderView, WorkDetailTemplate) {
+], function ($, _, Backbone, IScroll, Dragdealer, PageView, LoaderView) {
 	
 	var WorkDetailView = PageView.extend({
 		tagName: 'div',
 		className: 'wrapper',
+		detailSlider: null,
 
 		initialize : function (options) {
 			this.parent = options.parent;
-			this.workDetailTemplate = _.template(WorkDetailTemplate);
+			this.render();
 		},
 
 		render : function (){
 			var _this = this;
-			this.$el.html( this.workDetailTemplate( this.model ) );
 
 			_.defer( function() {
 				_this.detailScroll = new IScroll( _this.$el[0] , {
@@ -44,13 +43,13 @@ define([
 
 				_.delay( function() {
 					if( _this.detailSliderCount > 1 ) {
-						_this.detailSlider = new Dragdealer( _this.$el.find('#detail-slide').attr('id'), {
-							steps: _this.model.gallery.length-1,
+						_this.detailSlider = new Dragdealer( _this.$el.find('#detail-slide')[0], {
+							steps: _this.model.gallery.length,
 							speed: .3,
 							loose: true,
 							vertical: false,
 							callback: function(x, y) {
-								_this.showActiveSlide();
+								_this.showActiveSlide(_this.detailSlider);
 								_this.detailScroll.refresh();
 							}
 						});
@@ -70,16 +69,17 @@ define([
 
 		closeDetail : function() {
 			this.detailScroll.destroy();
+			this.$el.find('.scroller').removeAttr('style');
 			this.detailScroll = null;
+
 			$('header').removeClass('goaway');
 			this.parent.$el.find('h1, .btn-close').removeClass('goaway');
 			$(window).off('resize', _.bind( function() { this.resizeDetail(); }, this ) );
-			this.remove();
 			this.unbind();
 		},
 
 		resizeDetail : function() {
-			this.detailSliderCount = this.model.gallery.length-1;
+			this.detailSliderCount = this.model.gallery.length;
 			this.detailSliderWidth = this.$el.find('#detail-slide .media img').width();
 
 			this.$el.find('#detail-slide').find('.handle').css({ 'width': this.detailSliderWidth*this.detailSliderCount });
@@ -111,9 +111,10 @@ define([
 			});
 		},
 
-		showActiveSlide : function() {
-			var _index = this.detailSlider.getStep()[0] -1;
-			$(this.detailSlider.wrapper).find('.media').removeClass('active').eq(_index).addClass('active');
+		showActiveSlide : function(slider) {
+			console.log(slider.getStep());
+			var _index = slider.getStep()[0] -1;
+			$(slider.wrapper).find('.media').removeClass('active').eq(_index).addClass('active');
 		}
 
 	});

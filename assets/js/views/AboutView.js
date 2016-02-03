@@ -4,7 +4,7 @@ define([
   'backbone',
   'views/PageView',
   'views/LoaderView',
-  'text!templates/about.php'
+  'text!../../../about/index.html'
 
 ], function ($, _, Backbone, PageView, LoaderView, AboutTemplate) {
 	
@@ -14,8 +14,7 @@ define([
 		skillsLiCount : 0,
 
 		initialize : function () {
-			var template = _.template(AboutTemplate);
-		    this.$el.prepend(template);
+		    this.$el.prepend($(AboutTemplate).find('.page-view').html());
 
 		    this.model.set({ 'title': 'About' });
 		},

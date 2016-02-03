@@ -4,15 +4,14 @@ define([
   'backbone',
   'views/PageView',
   'views/LoaderView',
-  'text!templates/contact.php'
+  'text!../../../contact/index.html'
 
 ], function ($, _, Backbone, PageView, LoaderView, ContactTemplate) {
 	
 	var ContactView = PageView.extend({
 
 		initialize : function () {
-			var template = _.template(ContactTemplate);
-		    this.$el.prepend(template);
+			this.$el.prepend($(ContactTemplate).find('.page-view').html());
 
 		    this.model.set({ 'title': 'Contact' });
 		},

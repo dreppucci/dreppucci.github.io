@@ -14,12 +14,12 @@ define([
   'views/HeaderView',
   'views/HomeView',
   'views/AboutView',
-  'views/WorksListView',
+  'views/WorkView',
   'views/ContactView',
   'views/LoaderView',
   'models/MainModel'
 
-], function($, _, Backbone, External, MainView, PageView, HeaderView, HomeView, AboutView, WorksListView, ContactView, LoaderView, MainModel){
+], function($, _, Backbone, External, MainView, PageView, HeaderView, HomeView, AboutView, WorkView, ContactView, LoaderView, MainModel){
   
   var Router = Backbone.Router.extend({
 
@@ -32,7 +32,9 @@ define([
           'works': 'getWorksList',
           'works/': 'getWorksList',
           'works/:id': 'getWorksList',
+          'works/:id/': 'getWorksList',
           'works/:id/detail': 'getWorkDetail',
+          'works/:id/detail/': 'getWorkDetail',
           'contact': 'getContact',
           'contact/': 'getContact',
           '*notFound': 'notFound'
@@ -66,11 +68,11 @@ define([
       },
 
       getWorksList : function(id) {
-        this.controller( new WorksListView({ model: this.mainModel, section: id }) );
+        this.controller( new WorkView({ model: this.mainModel, section: id }) );
       },
 
       getWorkDetail : function(id) {
-        this.controller( new WorksListView({ model: this.mainModel, section: id }), true );
+        this.controller( new WorkView({ model: this.mainModel, section: id }), true );
       },
 
       getContact : function() {
