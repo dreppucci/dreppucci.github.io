@@ -17,6 +17,10 @@ collections:
 # Build settings
 markdown: "kramdown"
 include: ['.htaccess']
-gems:
-  - jekyll-redirect-from
-  - jekyll-sitemap
+gems: [jekyll-sitemap, jekyll-assets]
+sass:
+  style: compressed
+assets:
+  compress:
+    css: true
+    js: true

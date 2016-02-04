@@ -1,0 +1,185 @@
+/*****************/
+/*	_header.css
+/*****************/
+
+header {
+	position: fixed; top: 0; left: 0; width: 100%; z-index: 10; @include transition(top 1.5s $default-transition-easing, opacity 1.5s $default-transition-easing);
+	&.open {
+		.wrapper {
+			.logo {
+				@include crossproperty('transform', 'scale(.8)');
+				svg {
+					@include crossproperty('transition-delay', '0 !important'); fill: $color-global-white !important;
+				}
+			}
+			nav {
+				.bt-menu-trigger {
+					span {
+						background-color: transparent !important;
+						&:before,
+						&:after {
+							@include crossproperty('transition-delay', '0 !important'); background-color: $color-global-white;
+						}
+					}
+				}
+			}
+		}
+		.layer {
+			@include opacity(1); @include crossproperty('transform', 'translate3d(0,0,0)');
+		}
+	}
+	.layer {
+		position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; @include transition(transform .5s $default-transition-easing, opacity .5s $default-transition-easing); @include crossproperty('transform', 'translate3d(0,-100px,0)'); @include opacity(0); background: $color-global-red;
+	}
+	.wrapper {
+		position: relative; margin: 0 auto; z-index: 2;
+		.logo {
+			display: inline; float: left; padding: 15px 0; margin: 0 0 0 10px; @include transition(transform .5s $default-transition-easing); @include crossproperty('transform', 'scale(1)');
+			@include bp-small {
+				padding: 10px 0;
+			}
+			a {
+				@include transition(opacity .5s $default-transition-easing);
+				&:hover {
+					@include opacity(.7);
+				}
+			}
+			svg {
+				width: 70px; height: 70px; fill: $color-global-white; @include transition(fill .5s $default-transition-easing);
+				@include bp-small {
+					width: 60px; height: 60px;
+				}
+			}
+		}
+		nav {
+			position: absolute; top: 37px; right: 10px; @include crossproperty('backface-visibility', 'hidden');
+			@include bp-small {
+				top: 27px;
+			}
+			.bt-menu-trigger {
+				display: inline; float: right; width: 30px; height: 25px; cursor: pointer; position: relative;
+				span {
+					position: absolute; top: 50%; left: 0; display: block; width: 100%; height: 2px; background-color: $color-global-white; font-size: 0px; @include crossproperty('touch-callout', 'none'); @include crossproperty('user-select', 'none'); @include transition(top .5s $default-transition-easing, transform .5s $default-transition-easing, background-color .5s $default-transition-easing);
+
+					&:before,
+					&:after {
+						position: absolute; left: 0; width: 100%; height: 100%; background: $color-global-white; content: ''; @include transition(transform .5s $default-transition-easing, transform .5s $default-transition-easing, background-color .5s $default-transition-easing);
+					}
+					&:before {
+						top: -300%;
+					}
+					&:after {
+						top: 300%;
+					}
+				}
+				&:hover {
+					span {
+						@include crossproperty('transition-delay', '0 !important'); @include crossproperty('transform', 'translateX(10%)');
+						&:before,
+						&:after {
+							@include crossproperty('transform', 'translateX(-20%)');
+						}
+					}
+				}
+			}
+			ul {
+				li {
+					display: inline; float: left; margin: 0 10px;
+					a {
+						color: $color-global-white; text-decoration: none; font-size: 1.3em; line-height: 1em; text-transform: uppercase; @include transition(opacity .5s $default-transition-easing);
+						&.active {
+							cursor: default; position: relative;
+							&:after {
+								content: " "; display: block; height: 2px; width: 80%; background-color: $color-global-white; position: absolute; left: 50%; top: 120%; margin-left: -40%;
+							}
+						}
+						&:hover {
+							@include opacity(.7);
+						}
+					}
+					@include bp-small {
+						margin: 0 .4em;
+					}
+				}
+			}
+		}
+
+		.bt-menu {
+			ul {
+				display: inline; float: left; margin: 0 20px 0 0; padding: 0; list-style: none; @include crossproperty('backface-visibility', 'hidden');
+				li {
+					display: inline; float: left; opacity: 0; visibility: hidden; @include transition(transform .3s $default-transition-easing, opacity .3s $default-transition-easing, visibility .3s $default-transition-easing); @include crossproperty('transform', 'translate3d(0,-25px,0)');
+				}
+			}
+			&.bt-menu-open {
+				span {
+					background-color: transparent;
+					&:before {
+						top: 0 !important; @include crossproperty('transform', 'translateY(0) rotate(45deg) !important');
+					}
+					&:after {
+						top: 0 !important; @include crossproperty('transform', 'translateY(0) rotate(-45deg) !important');
+					}
+				}
+				&:hover {
+					span {
+						@include crossproperty('transform', 'translateX(0)');
+						&:before,
+						&:after {
+							@include crossproperty('transform', 'translateX(0)');
+						}
+					}
+				}
+				ul {
+					li {
+						visibility: visible; @include opacity(1); @include crossproperty('transform', 'translate3d(0,6px,0)');
+						&:nth-child(1) {
+							@include crossproperty('transition-delay', .2s);
+						}
+						&:nth-child(2) {
+							@include crossproperty('transition-delay', .1s);
+						}
+						&:nth-child(3) {
+							@include crossproperty('transition-delay', 0s);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+body {
+	&.no-js {
+		header {
+			display: none;
+		}
+	}
+	&.scrollable {
+		header {
+			&.goaway {
+				@include crossproperty('transition-delay', .25s); @include opacity(0); top: -25%;
+			}
+			.wrapper {
+				.logo {
+					a {
+						svg {
+							@include crossproperty('transition-delay', 1s); fill: $color-global-red;
+						}
+					}
+				}
+				nav {
+					.bt-menu-trigger {
+						span {
+							background-color: $color-global-red;
+							&:before,
+							&:after {
+								background-color: $color-global-red;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

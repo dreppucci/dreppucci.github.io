@@ -9,7 +9,7 @@ define([
 	'use strict';
 
 	var WorksList = Backbone.Collection.extend({
-		url: '/api/works/',
+		url: '/api/works.json',
 		model: WorkModel
 	});
 	
