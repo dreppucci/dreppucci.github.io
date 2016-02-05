@@ -152,7 +152,7 @@ section.page-view {
 		 @include opacity(1); @include crossproperty('transform', 'translate3d(0, 0, 0) rotateX(0deg)');
 	}
 	&.open {
-		@include crossproperty('transform', 'translate3D(0, 50px, -100px)');
+		@include crossproperty('transform', 'translate3D(0, 50px, -100px)'); @include opacity(.5);
 	}
 	.content {
 		position: relative; z-index: 2; top: 15%; text-align: center; @include crossproperty('backface-visibility', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
@@ -229,6 +229,15 @@ section.page-view {
 @include keyframes(borderenter) {
 	0% { border-color: transparent }
 	100% { border-color: $color-global-white; }
+}
+
+@include keyframes(circleAnim) {
+	0%  { @include transform(translate(-50%, -50%) scale(0)); }
+	14% { @include transform(translate(-50%, -50%) scale(.5)); }
+	28% { @include transform(translate(-50%, -50%) scale(.8)); }
+	50% { @include transform(translate(-50%, -50%) scale(1.5)); }
+	99% { @include transform(translate(-50%, -50%) scale(2)); @include opacity(0); }
+	100% { @include transform(translate(-50%, -50%) scale(0)); @include opacity(0); }
 }
 
 @include keyframes(socialHover) {

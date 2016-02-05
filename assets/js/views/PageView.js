@@ -12,18 +12,16 @@ define([
 		detail: false,
 
 		render : function (){
-			var _this = this;
-
 			LoaderView.trigger('preloadCompleted');
 
-			var _customClass = _this.model.get('title').toLowerCase() +'-view '+ this.className;
+			var _customClass = this.model.get('title').toLowerCase() +'-view '+ this.className;
 			this.$el.attr('class', _customClass );
 
-			_.defer( function() {
-				_this.hideContent();
-				_this.resizeImageBackground();
-				$(window).on('resize', _.bind(_this.resizeImageBackground, _this) );
-			} );
+			_.defer( $.proxy( function() {
+				this.hideContent();
+				this.resizeImageBackground();
+				$(window).on('resize', _.bind( this.resizeImageBackground, this) );
+			}, this ) );
 
 			return this;
 		},
@@ -44,15 +42,14 @@ define([
 		},
 
 		resizeImageBackground : function() {
-			var _this = this;
-			this.beforeResize( function(img) {
+			this.beforeResize( _.bind( function(img) {
 				this._maxImgSize = GetClientWindowSize('width') > GetClientWindowSize('height') ? GetClientWindowSize('width') : GetClientWindowSize('height');
-	            this._maxPixel = _maxImgSize;
+	            this._maxPixel = this._maxImgSize;
 	            this._imgW = $(img)[0].naturalWidth;
 	            this._imgH = $(img)[0].naturalHeight;
-	            this._imgProp = _imgW / _imgH;
+	            this._imgProp = this._imgW / this._imgH;
 
-	            if (_imgW > _imgH) {
+	            if (this._imgW > this._imgH) {
 	                $(img).css({
 	                    'height': this._maxPixel,
 	                    'width': this._maxPixel * this._imgProp,
@@ -67,23 +64,22 @@ define([
 	                    'margin-left': -(this._maxPixel / 2)
 	                });
 	            }
-	            _this.animImg(img, _this.showContent);
-			});
+	            this.animImg(img, this.showContent);
+			}, this ) );
 		},
 
 		animImg : function( img, callback ) {
-			var _this = this;
 			if( $(img).css('opacity') == 0 ) {
             	TweenMax.set( $(img), { scale: 1.1, z: .1 } );
-	            TweenMax.to( $(img), 2, { opacity: .6, ease: Expo.easeInOut, onComplete: function() { callback.apply(_this); } } );
+	            TweenMax.to( $(img), 2, { opacity: .6, ease: Expo.easeInOut, onComplete: $.proxy( function() { callback.apply(this); }, this ) } );
 	            TweenMax.to( $(img), 10, { scale: 1, z: .1, ease: Expo.Quad } );
 	        }
 		},
 
 		hideContent : function() {
 			this.$el.find('.content').children().not('img[data-type=background]').css('opacity', 0).children().not('strong, em, a').css('opacity', 0);
-			TweenMax.set( this.$el.find('.content').children().not('img[data-type=background]'), { y: -30, z: .1, rotationX: -10 } );
-			TweenMax.set( this.$el.find('.content').children().not('img[data-type=background]').children().not('strong, em, a, li.no-anim'), { y: -20, z: .1, rotationX: -10 } );
+			TweenMax.set( this.$el.find('.content').children().not('img[data-type=background]'), { z: .1, rotationX: -10 } );
+			TweenMax.set( this.$el.find('.content').children().not('img[data-type=background]').children().not('strong, em, a, li.no-anim'), { z: .1, rotationX: -10 } );
 		}
 
 	});

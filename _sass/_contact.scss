@@ -21,7 +21,7 @@ section.page-view {
 					}
 
 					a {
-						display: block; font-size: 1.3em; color: $color-global-white; text-decoration: none; width: 38px; height: 38px; background: transparent; border: 3px $color-global-white solid; @include border-radius(50%); position: relative; text-align: center; @include crossproperty('animation', 'socialHoverOut 1000ms linear both'); @include crossproperty('backface-visibility', 'hidden');
+						display: block; font-size: 1.3em; color: $color-global-white; text-decoration: none; width: 38px; height: 38px; background: transparent; border: 3px $color-global-white solid; @include transition(background .8s $default-transition-easing); @include border-radius(50%); position: relative; text-align: center; @include crossproperty('animation', 'socialHoverOut 1000ms linear both'); @include crossproperty('backface-visibility', 'hidden');
 
 						// BP SMALL
 						@include bp-small {
