@@ -30,6 +30,10 @@ section.page-view {
 			p {
 				font-size: 1.8em; line-height: 1.6em;
 
+				span {
+					display: block;
+				}
+
 				// BP SMALL
 				@include bp-small {
 					display: none;

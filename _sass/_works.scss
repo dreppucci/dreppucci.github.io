@@ -33,9 +33,9 @@ section.page-view {
 						@include transition(opacity 1.5s $default-transition-easing, transform 1.5s $default-transition-easing, color 1.5s $default-transition-easing); @include opacity(0); @include crossproperty('transform', 'translateY(-40px)'); @include crossproperty('transition-delay', .2s); font-weight: normal; font-size: 2em; text-transform: none; position: absolute; top: 35%; left: 0; text-align: center; width: 100%; margin: 0;
 					}
 					.btn {
-						@include transition(opacity 1.5s $default-transition-easing, transform 1.5s $default-transition-easing); @include opacity(0); @include crossproperty('transform', 'translateY(-50px)'); @include crossproperty('transition-delay', .3s); position: absolute; top: 55%; left: 0; text-align: center; width: 100%; margin: 0;
+						@include transition(opacity 1.5s $default-transition-easing, transform 1.5s $default-transition-easing); @include opacity(0); @include crossproperty('transform', 'translateY(-50px) translateX(-50%)'); @include crossproperty('transition-delay', .3s); position: absolute; top: 55%; left: 50%; text-align: center; display: inline; float: left; margin: 0;
 						a {
-							@extend %btn;
+							@extend %btn; display: block;
 						}
 					}
 					.detail {
@@ -172,7 +172,7 @@ section.page-view {
 							@include opacity(1); @include crossproperty('transform', 'translateY(0)');
 						}
 						.btn {
-							@include opacity(1); @include crossproperty('transform', 'translateY(0)');
+							@include opacity(1); @include crossproperty('transform', 'translateY(0) translateX(-50%)');
 						}
 					}
 				}
@@ -201,7 +201,7 @@ section.page-view {
 
 						h2,
 						.btn {
-							@include opacity(0); @include crossproperty('transform', 'translateY(-50px)');
+							@include opacity(0); @include crossproperty('transform', 'translateY(-50px) translateX(-50%)');
 						}
 
 						.detail {

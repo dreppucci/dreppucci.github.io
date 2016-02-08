@@ -48,49 +48,49 @@ section.page-view {
 					height: 30px; margin-bottom: 2em;
 				}
 
-				&:before,
-				&:after {
-					display: block; position: absolute; top: 50%; margin-top: -30px; width: 36px; height: 60px; font-size: 0; line-height: 0; background: url(/assets/gfx/img/code-tag.png) no-repeat; background-size: 72px 60px;
-					
-					// BP MEDIUM
-					@include bp-medium {
-						margin-top: -20px; width: 24px; height: 40px; background-size: 48px 40px;
-					}
-
-					// BP MEDIUM
-					@include bp-small {
-						margin-top: -15px; width: 18px; height: 30px; background-size: 36px 30px;
-					}
-				}
-				&:before {
-					content: ' '; left: -60px; background-position: left top;
-					
-					// BP MEDIUM
-					@include bp-medium {
-						left: -30px;
-					}
-
-					// BP SMALL
-					@include bp-small {
-						left: -40px;
-					}
-				}
-				&:after {
-					content: ' '; right: -60px; background-position: right top;
-					
-					// BP MEDIUM
-					@include bp-medium {
-						right: -30px;
-					}
-
-					// BP SMALL
-					@include bp-small {
-						right: -40px;
-					}
-				}
 				li {
 					position: absolute; top: 0; left: 0; right: auto; margin: 0; overflow: hidden; display: block; color: $color-global-white; font-size: 2.5em; line-height: 60px; list-style: none; text-align: center;
 					
+					&:before,
+					&:after {
+						display: block; position: absolute; top: 50%; margin-top: -30px; width: 36px; height: 60px; font-size: 0; line-height: 0; background: url(/assets/gfx/img/code-tag.png) no-repeat; background-size: 72px 60px;
+						
+						// BP MEDIUM
+						@include bp-medium {
+							margin-top: -20px; width: 24px; height: 40px; background-size: 48px 40px;
+						}
+
+						// BP MEDIUM
+						@include bp-small {
+							margin-top: -15px; width: 18px; height: 30px; background-size: 36px 30px;
+						}
+					}
+					&:before {
+						content: ' '; left: -60px; background-position: left top;
+						
+						// BP MEDIUM
+						@include bp-medium {
+							left: -30px;
+						}
+
+						// BP SMALL
+						@include bp-small {
+							left: -40px;
+						}
+					}
+					&:after {
+						content: ' '; right: -60px; background-position: right top;
+						
+						// BP MEDIUM
+						@include bp-medium {
+							right: -30px;
+						}
+
+						// BP SMALL
+						@include bp-small {
+							right: -40px;
+						}
+					}
 					// BP MEDIUM
 					@include bp-medium {
 						font-size: 1.6em; line-height: 40px;

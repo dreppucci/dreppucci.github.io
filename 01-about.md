@@ -51,9 +51,8 @@ permalink: /about/
 		<h2>My competences can include:</h2>
 		<ul class="skills clearfix">
 			<li class="no-anim">feasibility study</li>
-			<li class="no-anim">analysis and benchmark of competitors</li>
 			<li class="no-anim">team management</li>
-			<li class="no-anim">user interface design</li>
+			<li class="no-anim">analysis and benchmark of competitors</li>
 			<li class="no-anim">front-end development</li>
 			<li class="no-anim">accessibility and usability</li>
 			<li class="no-anim">server-side integration consulting</li>
