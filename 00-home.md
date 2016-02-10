@@ -2,6 +2,7 @@
 layout: page
 title: Home
 permalink: /home/
+description: home description
 ---
 
 <section class="page-view home-view enter">

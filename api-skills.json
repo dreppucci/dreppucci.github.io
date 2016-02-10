@@ -1,0 +1,32 @@
+---
+permalink: /api/skills
+---
+
+{
+	"data": [
+		{
+			"skill": "team management"
+		},
+		{
+			"skill": "feasibility study"
+		},
+		{
+			"skill": "analysis and benchmark of competitors"
+		},
+		{
+			"skill": "front-end development"
+		},
+		{
+			"skill": "accessibility and usability"
+		},
+		{
+			"skill": "server-side integration consulting"
+		},
+		{
+			"skill": "cloud web application management"
+		},
+		{
+			"skill": "provide the best technical solution"
+		}
+	]
+}

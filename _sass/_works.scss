@@ -18,7 +18,7 @@ section.page-view {
 				.content {
 					position: relative; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;
 					h1 {
-						@include transition(opacity 1.5s $default-transition-easing, transform 1.5s $default-transition-easing, color 1.5s $default-transition-easing, top 1.5s $default-transition-easing, font 1.5s $default-transition-easing, line-height 1.5s $default-transition-easing); @include opacity(0); @include crossproperty('transform', 'translateY(-50px)'); position: absolute; top: 15%; left: 0; text-align: center; width: 100%; z-index: 10; margin: 0;
+						@include transition(opacity 1.5s $default-transition-easing, transform 1.5s $default-transition-easing, color 1.5s $default-transition-easing, top 1.5s $default-transition-easing, font 1.5s $default-transition-easing, line-height 1.5s $default-transition-easing); @include opacity(0); @include crossproperty('transform', 'translateY(-50px)'); position: absolute; top: 15%; left: 0; text-align: center; width: 100%; z-index: 11; margin: 0;
 						
 						// BP SMALL
 						@include bp-small {
@@ -37,6 +37,9 @@ section.page-view {
 						a {
 							@extend %btn; display: block;
 						}
+					}
+					.layer {
+						position: fixed; top: 0; left: 0; right: 0; @include background-gradient($color-global-white 35%, rgba(255,255,255,0) 100% ); height: 0; z-index: 10; @include transition(height .5s $default-transition-easing); @include crossproperty('transition-delay', 0s);
 					}
 					.detail {
 						position: relative; z-index: 9; background: $color-global-white; width: 100%; height: 100%; margin: 0; top: 100%; @include transition(margin 1.5s $default-transition-easing, top 1.5s $default-transition-easing, transform 1.5s $default-transition-easing); min-height: 500px; color: $color-global-black;
@@ -177,6 +180,9 @@ section.page-view {
 					}
 				}
 				&.opened {
+					.layer {
+						height: 15em; @include crossproperty('transition-delay', '1.1s !important');
+					}
 					.background {
 						img {
 							@include opacity(0); @include crossproperty('transform', 'scale(.8)');
@@ -187,7 +193,8 @@ section.page-view {
 							color: $color-global-black; top: 10%;
 							@include crossproperty('transition-duration', .5s);
 							&.goaway {
-								@include crossproperty('transition-delay', 0); top: 0; background-color: $color-global-white; font-size: 2em; line-height: 2em;
+								@include crossproperty('transition-delay', 0s); top: 0; font-size: 2em; line-height: 2em;
+								/*background-color: $color-global-white;*/
 								&:after {
 									top: 100%;
 								}
@@ -201,7 +208,15 @@ section.page-view {
 
 						h2,
 						.btn {
-							@include opacity(0); @include crossproperty('transform', 'translateY(-50px) translateX(-50%)');
+							@include opacity(0);
+						}
+
+						.btn {
+							@include crossproperty('transform', 'translateY(-50px) translateX(-50%)');
+						}
+
+						h2 {
+							@include crossproperty('transform', 'translateY(-50px)');
 						}
 
 						.detail {

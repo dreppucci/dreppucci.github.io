@@ -17,7 +17,7 @@ define([
 			var _customClass = this.model.get('title').toLowerCase() +'-view '+ this.className;
 			this.$el.attr('class', _customClass );
 
-			_.defer( $.proxy( function() {
+			_.defer( _.bind( function() {
 				this.hideContent();
 				this.resizeImageBackground();
 				$(window).on('resize', _.bind( this.resizeImageBackground, this) );

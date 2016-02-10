@@ -21,7 +21,7 @@ section.page-view {
 					}
 
 					a {
-						display: block; font-size: 1.3em; color: $color-global-white; text-decoration: none; width: 38px; height: 38px; background: transparent; border: 3px $color-global-white solid; @include transition(background .8s $default-transition-easing); @include border-radius(50%); position: relative; text-align: center; @include crossproperty('animation', 'socialHoverOut 1000ms linear both'); @include crossproperty('backface-visibility', 'hidden');
+						display: block; font-size: 1.3em; color: $color-global-white; text-decoration: none; width: 38px; height: 38px; background: transparent; border: 3px $color-global-white solid; @include transition(transform .8s $default-transition-easing, background .8s $default-transition-easing); @include border-radius(50%); position: relative; text-align: center; @include crossproperty('backface-visibility', 'hidden');
 
 						// BP SMALL
 						@include bp-small {
@@ -29,10 +29,10 @@ section.page-view {
 						}
 
 						svg {
-							max-width: 20px; max-height: 20px; width: 20px; height: 20px; color: $color-global-black; fill: $color-global-white; position: absolute; top: 50%; left: 50%; margin-top: -10px; margin-left: -10px; z-index: 2; @include transition(all .8s $default-transition-easing);
+							max-width: 20px; max-height: 20px; width: 20px; height: 20px; color: $color-global-black; fill: $color-global-white; position: absolute; top: 50%; left: 50%; margin-top: -10px; margin-left: -10px; z-index: 2; @include transition(fill .8s $default-transition-easing, transform .8s $default-transition-easing);
 						}
 						span {
-							position: absolute; top: 50%; left: 50%; width: 34px; height: 34px; margin: -17px 0 0 -17px; background: transparent; @include opacity(1); @include border-radius(50%); @include transition(all .8s $default-transition-easing);
+							position:absolute; top:50%; left:50%; width: 40px; height: 40px; @include crossproperty('transform', 'scale(0) translate(-50%, -50%)'); @include crossproperty('transform-origin', '0 0'); background: $color-global-white; @include opacity(0); @include border-radius(50%); @include transition(opacity .5s $default-transition-easing, transform .5s $default-transition-easing);
 
 							// BP SMALL
 							@include bp-small {
@@ -40,12 +40,13 @@ section.page-view {
 							}
 						}
 						&:hover {
-							@include crossproperty('animation', 'socialHover 1000ms linear both'); background: $color-global-white;
+							@include crossproperty('transform', 'scale(1.1)');
+
 							svg {
 								fill: $color-global-red; @include crossproperty('transform', 'scale(.9)');
 							}
 							span {
-								width: 0; height: 0; margin: 0; @include opacity(0);
+								@include opacity(1); @include crossproperty('transform', 'scale(1) translate(-50%, -50%)');
 							}
 						}
 					}

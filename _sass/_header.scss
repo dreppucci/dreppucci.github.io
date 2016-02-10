@@ -9,7 +9,7 @@ header {
 			.logo {
 				@include crossproperty('transform', 'scale(.8)');
 				svg {
-					@include crossproperty('transition-delay', '0 !important'); fill: $color-global-white !important;
+					@include crossproperty('transition-delay', '0s !important'); fill: $color-global-white !important;
 				}
 			}
 			nav {
@@ -18,7 +18,7 @@ header {
 						background-color: transparent !important;
 						&:before,
 						&:after {
-							@include crossproperty('transition-delay', '0 !important'); background-color: $color-global-white;
+							@include crossproperty('transition-delay', '0s !important'); background-color: $color-global-white;
 						}
 					}
 				}
@@ -164,13 +164,13 @@ body {
 	&.scrollable {
 		header {
 			&.goaway {
-				@include crossproperty('transition-delay', .25s); @include opacity(0); top: -25%;
+				@include crossproperty('transition-delay', 0s); @include opacity(0); top: -25%;
 			}
 			.wrapper {
 				.logo {
 					a {
 						svg {
-							@include crossproperty('transition-delay', 1s); fill: $color-global-red;
+							@include crossproperty('transition-delay', 0s); fill: $color-global-red;
 						}
 					}
 				}
@@ -181,6 +181,19 @@ body {
 							&:before,
 							&:after {
 								background-color: $color-global-red;
+							}
+						}
+					}
+				}
+			}
+			&.open {
+				nav {
+					.bt-menu-trigger {
+						span {
+							background-color: $color-global-white;
+							&:before,
+							&:after {
+								background-color: $color-global-white;
 							}
 						}
 					}

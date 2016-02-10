@@ -2,6 +2,7 @@
 layout: page
 title: Works
 permalink: /works/
+description: works description
 ---
 
 <section class="page-view work-view" id="works-list">
@@ -13,6 +14,7 @@ permalink: /works/
 				<h1>{{ work.title }}</h1>
 				<h2>{{ work.abstract }}</h2>
 				<p class="btn"><a href="javascript:void(0)" title="View case study" data-id="{{ forloop.index }}"><em></em><em></em><span>View case study</span></a></p>
+				<div class="layer"></div>
 
 				<div class="detail" id="detail-{{ forloop.index }}">
 					<div class="wrapper">

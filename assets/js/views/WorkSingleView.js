@@ -38,15 +38,13 @@ define([
 		},
 
 		closeWorkDetail : function(event) {
-			var _this = this;
-
 			this.$el.removeClass('opened').find('.row').removeClass('show');
-			TweenMax.to( 'html, body', .1, { delay: 1, css: { className: '' }, onComplete: function() {
-				_this.workdDetailView.closeDetail();
+			TweenMax.to( 'html, body', .1, { delay: 1, css: { className: '' }, onComplete: _.bind( function() {
+				this.workdDetailView.closeDetail();
 				$('html, body').removeClass('scrollable');
-				_this.parent.slider.enable();
-				Backbone.history.navigate('/works/'+_this.model.id, {trigger: false});
-			} } );
+				this.parent.slider.enable();
+				Backbone.history.navigate('/works/'+this.model.id, {trigger: false});
+			}, this ) } );
 		},
 
 		showContent : function() {

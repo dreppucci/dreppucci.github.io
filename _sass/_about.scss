@@ -36,7 +36,7 @@ section.page-view {
 				}
 			}
 			ul.skills {
-				position: relative; left: 50%; height: 60px; margin-top: 1em; margin-bottom: 4em;
+				position: relative; width: 100%; left: auto; display: block; height: 60px; margin-top: 1em; margin-bottom: 4em;
 				
 				// BP MEDIUM
 				@include bp-medium {
@@ -49,47 +49,22 @@ section.page-view {
 				}
 
 				li {
-					position: absolute; top: 0; left: 0; right: auto; margin: 0; overflow: hidden; display: block; color: $color-global-white; font-size: 2.5em; line-height: 60px; list-style: none; text-align: center;
+					position: absolute; top: 0; margin: 0; left: 50%; right: auto; @include crossproperty('transform', 'translateX(-50%)'); padding: 0 20px; color: $color-global-white; font-size: 2.5em; line-height: 60px; list-style: none; text-align: center;
 					
-					&:before,
-					&:after {
-						display: block; position: absolute; top: 50%; margin-top: -30px; width: 36px; height: 60px; font-size: 0; line-height: 0; background: url(/assets/gfx/img/code-tag.png) no-repeat; background-size: 72px 60px;
-						
-						// BP MEDIUM
-						@include bp-medium {
-							margin-top: -20px; width: 24px; height: 40px; background-size: 48px 40px;
+					em {
+						position: absolute; width: 20px; display: block; height: 100%; top: 0;
+						svg {
+							height: 60%; width: 60%; position: absolute; top: 50%; left: 50%; @include crossproperty('transform', 'translate(-50%, -50%)'); fill: $color-global-white;
 						}
-
-						// BP MEDIUM
-						@include bp-small {
-							margin-top: -15px; width: 18px; height: 30px; background-size: 36px 30px;
+						&.left {
+							left: -20px;
+						}
+						&.right {
+							right: -20px;
 						}
 					}
-					&:before {
-						content: ' '; left: -60px; background-position: left top;
-						
-						// BP MEDIUM
-						@include bp-medium {
-							left: -30px;
-						}
-
-						// BP SMALL
-						@include bp-small {
-							left: -40px;
-						}
-					}
-					&:after {
-						content: ' '; right: -60px; background-position: right top;
-						
-						// BP MEDIUM
-						@include bp-medium {
-							right: -30px;
-						}
-
-						// BP SMALL
-						@include bp-small {
-							right: -40px;
-						}
+					&.last {
+						top: 100%; @include opacity(0);
 					}
 					// BP MEDIUM
 					@include bp-medium {

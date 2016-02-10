@@ -2,6 +2,7 @@
 layout: page
 title: Contact
 permalink: /contact/
+description: contact description
 ---
 <section class="page-view contact-view">
 	<div class="content">

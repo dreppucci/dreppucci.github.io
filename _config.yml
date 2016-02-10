@@ -16,6 +16,7 @@ collections:
 
 # Build settings
 markdown: "kramdown"
+exclude: ['Gemfile']
 include: ['.htaccess']
 gems: [jekyll-sitemap, jekyll-assets]
 sass:
@@ -24,3 +25,7 @@ assets:
   compress:
     css: true
     js: true
+compress_html:
+  clippings: all
+  comments:  ["<!-- ", " -->"]
+  endings:   all

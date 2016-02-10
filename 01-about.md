@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+description: about description
 ---
 
 <section class="page-view about-view">
@@ -49,16 +50,7 @@ permalink: /about/
 		</ul>
 
 		<h2>My competences can include:</h2>
-		<ul class="skills clearfix">
-			<li class="no-anim">feasibility study</li>
-			<li class="no-anim">team management</li>
-			<li class="no-anim">analysis and benchmark of competitors</li>
-			<li class="no-anim">front-end development</li>
-			<li class="no-anim">accessibility and usability</li>
-			<li class="no-anim">server-side integration consulting</li>
-			<li class="no-anim">cloud web application management</li>
-			<li class="no-anim">provide the best technical solution</li>
-		</ul>
+		<ul class="skills clearfix"></ul>
 
 		<p>My motto is: <strong>less is more</strong> (Coco Chanel)</p>
 	</div>
