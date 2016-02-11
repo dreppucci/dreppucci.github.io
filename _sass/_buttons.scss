@@ -23,7 +23,7 @@
 		border-width: 1px; padding: .8em; text-align: center;
 	}
 	&:hover {
-		background: none; @include box-shadow(0, 0, 20px, $color-global-white);
+		background: none;
 		span {
 			color: $color-global-black; @include crossproperty('transition-delay', 0s);
 		}

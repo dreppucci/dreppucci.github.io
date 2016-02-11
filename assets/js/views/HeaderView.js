@@ -21,13 +21,17 @@ define([
 		},
 
 		hamTrigger : function(event) {
-			if( $('#bt-menu').hasClass('bt-menu-open') ) {
-				$('#bt-menu').addClass('bt-menu-close').removeClass('bt-menu-open');
+			if( this.menu.hasClass('bt-menu-open') ) {
+				this.menu.addClass('bt-menu-close').removeClass('bt-menu-open');
 				$('header, .page-view').removeClass('open');
+
+				window.ga('send', 'event', 'Header', 'Closed' );
 			}
 			else {
-				$('#bt-menu').addClass( 'bt-menu-open' ).removeClass( 'bt-menu-close' );
+				this.menu.addClass( 'bt-menu-open' ).removeClass( 'bt-menu-close' );
 				$('header, .page-view').addClass('open');
+
+				window.ga('send', 'event', 'Header', 'Opened' );
 			}
 		},
 
@@ -44,7 +48,7 @@ define([
 				if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) event.preventDefault();
 
 				$('html, body').removeClass('scrollable');
-				$('#bt-menu').removeClass('bt-menu-open');
+				this.menu.removeClass('bt-menu-open');
 				$('header, .page-view').removeClass('open');
 
 				Backbone.history.navigate(url, { trigger: true });

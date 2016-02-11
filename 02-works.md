@@ -2,14 +2,15 @@
 layout: page
 title: Works
 permalink: /works/
-description: works description
+description: Take a look on what Davide Reppucci has made in these years
 ---
 
 <section class="page-view work-view" id="works-list">
 	<div class="handle main">
-		{% assign sorted_works = (site.works | sort: 'order') %}
+		{% assign sorted_works = (site.works | sort: 'order') | reverse %}
 		{% for work in sorted_works %}
 		<article>
+		
 			<div class="content">
 				<h1>{{ work.title }}</h1>
 				<h2>{{ work.abstract }}</h2>

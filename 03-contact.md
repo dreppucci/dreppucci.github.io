@@ -2,7 +2,7 @@
 layout: page
 title: Contact
 permalink: /contact/
-description: contact description
+description: You can find Davide Reppucci on Github, Facebook, Twitter, Linkedin, Flickr, Youtube or you can email him at davide@reppucci.it
 ---
 <section class="page-view contact-view">
 	<div class="content">

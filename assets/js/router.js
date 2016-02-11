@@ -1,127 +1,138 @@
-// Filename: router.js
-// http://coenraets.org/blog/2012/01/backbone-js-lessons-learned-and-improved-sample-app/
-// http://stackoverflow.com/questions/7822542/backbone-routers-wait-for-data-to-be-fetched-first
-// http://thecreativeclass.tv/#hare
-// http://wild.as/bali
-// http://www.jam3.com/contact/
 define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'external',
-  'views/MainView',
-  'views/PageView',
-  'views/HeaderView',
-  'views/HomeView',
-  'views/AboutView',
-  'views/WorkView',
-  'views/ContactView',
-  'views/LoaderView',
-  'models/MainModel'
+	'jquery',
+	'underscore',
+	'backbone',
+	'external',
+	'views/MainView',
+	'views/PageView',
+	'views/HeaderView',
+	'views/HomeView',
+	'views/AboutView',
+	'views/WorkView',
+	'views/ContactView',
+	'views/LoaderView',
+	'models/MainModel'
 
 ], function($, _, Backbone, External, MainView, PageView, HeaderView, HomeView, AboutView, WorkView, ContactView, LoaderView, MainModel){
-  
-  var Router = Backbone.Router.extend({
+	
+	var Router = Backbone.Router.extend({
 
-      routes: {
-          '': 'getHome',
-          'home': 'getHome',
-          'home/': 'getHome',
-          'about': 'getAbout',
-          'about/': 'getAbout',
-          'works': 'getWorksList',
-          'works/': 'getWorksList',
-          'works/:id': 'getWorksList',
-          'works/:id/': 'getWorksList',
-          'works/:id/detail': 'getWorkDetail',
-          'works/:id/detail/': 'getWorkDetail',
-          'contact': 'getContact',
-          'contact/': 'getContact',
-          '*notFound': 'notFound'
-      },
+		routes: {
+			'': 'getHome',
+			'home': 'getHome',
+			'home/': 'getHome',
+			'about': 'getAbout',
+			'about/': 'getAbout',
+			'works': 'getWorksList',
+			'works/': 'getWorksList',
+			'works/:id': 'getWorksList',
+			'works/:id/': 'getWorksList',
+			'works/:id/detail': 'getWorkDetail',
+			'works/:id/detail/': 'getWorkDetail',
+			'contact': 'getContact',
+			'contact/': 'getContact',
+			'*notFound': 'notFound'
+		},
 
-      initialize: function(){
-        this.mainModel = new MainModel();
-        this.mainModel.set({'window': window, 'body': $('body'), 'width': GetClientWindowSize('width'), 'height': GetClientWindowSize('height') });
+		initialize: function(){
 
-        this.mainView = new MainView({ model: this.mainModel });
-        this.pageView = new PageView();
-        this.headerView = new HeaderView({ model: this.mainModel });
+			this.initializeGA();
 
-        this.mainModel.get('body').append(this.mainView.render().$el);
-        this.mainModel.on('change', _.bind(this.updateTitle, this) );
+			this.mainModel = new MainModel();
+			this.mainModel.set({'window': window, 'body': $('body'), 'width': GetClientWindowSize('width'), 'height': GetClientWindowSize('height') });
 
-        TweenMax.lagSmoothing(0);
-        TweenMax.force3D = true;
+			this.mainView = new MainView({ model: this.mainModel });
+			this.pageView = new PageView();
+			this.headerView = new HeaderView({ model: this.mainModel });
 
-        $(window).on('resize', _.bind(this.updateWinSize, this) );
+			this.mainModel.get('body').append(this.mainView.render().$el);
+			this.mainModel.on('change', _.bind(this.updateTitle, this) );
 
-        _.extend(this.events, Router.prototype.events);
-      },
+			TweenMax.lagSmoothing(0);
+			TweenMax.force3D = true;
 
-      getHome : function() {
-        this.controller( new HomeView({ model: this.mainModel }) );
-      },
+			$(window).on('resize', _.bind(this.updateWinSize, this) );
 
-      getAbout : function() {
-        this.controller( new AboutView({ model: this.mainModel }) );
-      },
+			_.extend(this.events, Router.prototype.events);
+		},
 
-      getWorksList : function(id) {
-        this.controller( new WorkView({ model: this.mainModel, section: id }) );
-      },
+		initializeGA : function() {
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      getWorkDetail : function(id) {
-        this.controller( new WorkView({ model: this.mainModel, section: id }), true );
-      },
+			window.ga('create', 'UA-73037711-1', 'auto');
+			window.ga('send', 'pageview');
+		},
 
-      getContact : function() {
-        this.controller( new ContactView({ model: this.mainModel }) );
-      },
+		getHome : function() {
+			this.controller( new HomeView({ model: this.mainModel }) );
+		},
 
-      notFound : function() {
-        this.navigate('home', { trigger: true });
-      },
+		getAbout : function() {
+			this.controller( new AboutView({ model: this.mainModel }) );
+		},
 
-      controller : function( view, detail ) {
-        _this = this;
-        LoaderView.trigger('preloadStarted');
-        if( this.mainModel.get('current') !== null ) this.mainModel.previous('current').$el.removeClass('enter');
-        if( this.mainModel.get('current') === null ) {
-          $('.page-view').remove();
-          $('body').removeClass('no-js');
-        }
+		getWorksList : function(id) {
+			this.controller( new WorkView({ model: this.mainModel, section: id }) );
+		},
 
-        if( this.mainModel.get('current') !== null ) this.mainModel.set({ 'prev': this.mainModel.previous('current') });
-        
-        _.delay( function() {
-          //if( _this.mainModel.get('current') === null ) _this.mainView.$el.parent().prepend(_this.headerView.render().$el);
-          if( _this.mainModel.get('current') !== null ) _this.mainModel.previous('current').unrender();
-          
-          _this.mainModel.set({'current': view });
+		getWorkDetail : function(id) {
+			this.controller( new WorkView({ model: this.mainModel, section: id }), true );
+		},
 
-          if( detail !== 'undefined' ) view.detail = detail;
-          _this.mainView.$el.append(view.render().$el);
+		getContact : function() {
+			this.controller( new ContactView({ model: this.mainModel }) );
+		},
 
-          _.delay( function() { view.$el.addClass('enter'); }, 1000);
+		notFound : function() {
+			this.navigate('home', { trigger: true });
+		},
 
-          $('header ul li a').removeClass('active');
-          $('header ul li a[href*="'+Backbone.history.fragment.split('/')[0]+'"]').addClass('active');
+		controller : function( view, detail ) {
 
-          return view;
-        }, 600, 'view changed');
-      },
+			LoaderView.trigger('preloadStarted');
 
-      updateTitle : function() {
-        document.title = this.mainModel.get('title') + this.mainModel.get('defaultTitle');
-      },
+			window.ga('send', 'event', 'Page', 'Requested', this.mainModel.get('title') );
 
-      updateWinSize : function() {
-        this.mainModel.set({ 'width': GetClientWindowSize('width'), 'height': GetClientWindowSize('height') });
-      }
+			if( this.mainModel.get('current') !== null ) this.mainModel.previous('current').$el.removeClass('enter');
+			if( this.mainModel.get('current') === null ) {
+				$('.page-view').remove();
+				$('body').removeClass('no-js');
+			}
 
-  });
+			if( this.mainModel.get('current') !== null ) this.mainModel.set({ 'prev': this.mainModel.previous('current') });
+			
+			_.delay( _.bind( function() {
+				if( this.mainModel.get('current') !== null ) this.mainModel.previous('current').unrender();
+				
+				this.mainModel.set({'current': view });
 
-  return Router;
+				window.ga('send', 'event', 'Page', 'Loaded', this.mainModel.get('title') );
+
+				if( detail !== 'undefined' ) view.detail = detail;
+				this.mainView.$el.append(view.render().$el);
+
+				_.delay( function() { view.$el.addClass('enter'); }, 1000);
+
+				this.headerView.$el.find('ul li a').removeClass('active');
+				this.headerView.$el.find('ul li a[href*="'+Backbone.history.fragment.split('/')[0]+'"]').addClass('active');
+
+				return view;
+			}, this ), 600, 'view changed');
+		},
+
+		updateTitle : function() {
+			document.title = this.mainModel.get('title') + this.mainModel.get('defaultTitle');
+		},
+
+		updateWinSize : function() {
+			this.mainModel.set({ 'width': GetClientWindowSize('width'), 'height': GetClientWindowSize('height') });
+		}
+
+	});
+
+	return Router;
 
 });

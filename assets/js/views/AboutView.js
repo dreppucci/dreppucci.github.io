@@ -26,19 +26,24 @@ define([
 			this.skillsList.fetch({
 				success: function(c, r) {
 					console.log('data loaded', r);
+
+					window.ga('send', 'event', 'SkillsList', 'Loaded' );
 				},
 				error: function(c, r) {
 					console.log('error', r);
+
+					window.ga('send', 'event', 'SkillsList', 'Error' );
 				}
 			})
 				.then(_.bind(function( collection, response ) {
 					callback(collection, response);
-					LoaderView.trigger('preloadCompleted');
 			}, this) );
 		},
 
 		render : function() {
 			this.before( _.bind( function(collection, response) {
+
+				LoaderView.trigger('preloadCompleted');
 
 				this.collection = collection;
 

@@ -1,5 +1,35 @@
 		</section>
 		<!-- /END .app-view -->
+
+		<div id="outdated">
+			<h6>Your browser is out-of-date!</h6>
+			<p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" title="Update my browser now">Update my browser now</a></p>
+			<p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+		</div>
+		<script type="text/javascript" src="/assets/js/plugins/outdatedbrowser.min.js"></script>
+		<script type="text/javascript">
+			function addLoadEvent(func) {
+				var oldonload = window.onload;
+				if (typeof window.onload != 'function') {
+					window.onload = func;
+				} else {
+					window.onload = function() {
+						if (oldonload) {
+							oldonload();
+						}
+						func();
+					}
+				}
+			}
+			//call function after DOM ready
+			addLoadEvent(function(){
+				outdatedBrowser({
+					bgColor: '#f25648',
+					color: '#ffffff',
+					lowerThan: 'transform',
+					languagePath: ''
+				})
+			});
+		</script>
 		
-		<script data-main="/assets/js/app" src="/assets/js/framework/require.js" type="text/javascript"></script>
-		<!--[if lt IE 9]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		<script type="text/javascript" data-main="/assets/js/app" src="/assets/js/framework/require.js"></script>

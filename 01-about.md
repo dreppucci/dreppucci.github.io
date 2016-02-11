@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-description: about description
+description: Davide Reppucci loves web, design, photography, racing, reading and more and has many competences which would help you.
 ---
 
 <section class="page-view about-view">

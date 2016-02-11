@@ -33,6 +33,8 @@ define([
 			this.worksList.fetch({
 				success: function(c, r) {
 					console.log('data loaded', r);
+
+					window.ga('send', 'event', 'WorksList', 'Loaded' );
 				},
 				error: function(c, r) {
 					console.log('error', r);
@@ -40,26 +42,31 @@ define([
 			})
 				.then(_.bind(function( collection, response ) {
 					callback(collection, response);
-					LoaderView.trigger('preloadCompleted');
+
+					window.ga('send', 'event', 'WorksList', 'Error' );
 			}, this) );
 		},
 
 		render : function (){
 			this.before( _.bind( function(collection, response) {
-				_.each( collection.data, _.bind(function( work, index ) {
+
+				LoaderView.trigger('preloadCompleted');
+
+				this.collection = collection;
+
+				_.each( this.collection.data, _.bind(function( work, index ) {
 					this.workUrlId.push(work.id);
+
 					var _localView = new WorkSingleView({ el: this.$el.find('.handle.main article').eq(work.id-1), model: work, parent: this });
 				}, this) );
 
-				this.renderSlide(collection);
+				this.renderSlide();
 			}, this ) );
 
 			return this;
 		},
 
-		renderSlide : function(collection) {
-
-			this.collection = collection;
+		renderSlide : function() {
 			this.resizeSlider();
 
 			_initialSlideId = null;
@@ -71,8 +78,8 @@ define([
 				loose: true,
 				vertical: false,
 				callback: _.bind( function(x, y) {
-					if( _initialSlideId ) _.delay( _.bind( function() { this.showSlideContent( this.slider, this.collection ); }, this ), 1200 );
-					else { this.detail = false; this.showSlideContent( this.slider, this.collection ); }
+					this.showSlideContent();
+					if( !_initialSlideId ) this.detail = false;
 				}, this )
 			} );
 			this.slider.setStep(_initialSlideId, 0, true);
@@ -89,23 +96,25 @@ define([
 			this.$el.find('article').css( 'width', this.model.get('width') );
 		},
 
-		showSlideContent : function(slider, collection) {
+		showSlideContent : function() {
 
 			if( this.currentSliderId !== null ) this.oldSliderId = this.currentSliderId;
-			this.currentSliderId = !isNaN(slider.getStep()[0]) ? slider.getStep()[0] : 0;
+			this.currentSliderId = !isNaN(this.slider.getStep()[0]) ? this.slider.getStep()[0] : 0;
 			_getWorkUrlId = this.currentSliderId != 0 ? this.workUrlId[this.currentSliderId-1] : this.workUrlId[this.currentSliderId];
 			if( this.oldSliderId !== null ) _articleClassDirection = this.oldSliderId == this.currentSliderId ? '' : this.oldSliderId < this.currentSliderId ? 'from-right' : 'from-left';
 			else _articleClassDirection = '';
 
 			if( this.oldSliderId !== this.currentSliderId ) {
-				if( this.currentSliderId !== 0 ) this.model.set({ 'title': collection.data[ this.currentSliderId-1 ].title + ' - Works' });
-				else this.model.set({ 'title': collection.data[ this.currentSliderId ].title + ' - Works' });
+				window.ga('send', 'event', 'WorksSlide', 'Selected', this.currentSliderId );
 
-				$(slider.wrapper).find('article').removeClass('selected from-left from-right').eq(this.currentSliderId-1).addClass(_articleClassDirection);
-				_.delay( _.bind( function() { $(slider.wrapper).find('article').eq(this.currentSliderId-1).addClass('selected'); }, this ), 100 );
+				if( this.currentSliderId !== 0 ) this.model.set({ 'title': this.collection.data[ this.currentSliderId-1 ].title + ' - Works' });
+				else this.model.set({ 'title': this.collection.data[ this.currentSliderId ].title + ' - Works' });
+
+				$(this.slider.wrapper).find('article').removeClass('selected from-left from-right').eq(this.currentSliderId-1).addClass(_articleClassDirection);
+				_.delay( _.bind( function() { $(this.slider.wrapper).find('article').eq(this.currentSliderId-1).addClass('selected'); }, this ), 100 );
 
 				if( !this.detail ) Backbone.history.navigate('/works/'+_getWorkUrlId+'/', {trigger: false});
-				else $(slider.wrapper).find('article').eq(this.currentSliderId-1).find('.btn a').trigger('click');
+				else $(this.slider.wrapper).find('article').eq(this.currentSliderId-1).find('.btn a').trigger('click');
 			}
 		},
 

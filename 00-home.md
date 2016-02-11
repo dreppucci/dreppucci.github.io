@@ -2,10 +2,10 @@
 layout: page
 title: Home
 permalink: /home/
-description: home description
+description: Davide Reppucci is a team leader, technical project manager and front-end developer from Italy.
 ---
 
-<section class="page-view home-view enter">
+<section class="page-view home-view">
 	<div class="content">
 		<h1>Hello!</h1>
 		<h2>I'm Davide Reppucci</h2>
@@ -18,5 +18,5 @@ description: home description
 			<li><a href="/contact" title="contact me" data-behavior="internal"><em></em><em></em><span>contact me</span></a></li>
 		</ul>
 	</div>
-	<img src="/assets/gfx/views/home.jpg" data-type="background" alt="" title="" class="enter" />
+	<img src="/assets/gfx/views/home.jpg" data-type="background" alt="" title="" />
 </section>

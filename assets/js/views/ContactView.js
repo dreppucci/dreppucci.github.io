@@ -10,6 +10,10 @@ define([
 	
 	var ContactView = PageView.extend({
 
+		events : {
+			'click ul a': 'trackOutBoundLinks'
+		},
+
 		initialize : function () {
 			this.$el.prepend($(ContactTemplate).find('.page-view').html());
 
@@ -32,6 +36,10 @@ define([
 			TweenMax.to( this.$el.find('.content p:eq(0)'), this.model.get('tweenAnimDuration'), { delay: _liDelay += .2, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
 			TweenMax.to( this.$el.find('.content ul:eq(1) li'), 0, { delay: _liDelay, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
 			TweenMax.to( this.$el.find('.content ul:eq(1)'), this.model.get('tweenAnimDuration'), { delay: _liDelay += .2, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
+		},
+
+		trackOutBoundLinks : function(event) {
+			window.ga('send', 'event', 'ContactLinks', 'Pressed', $(event.currentTarget).attr('title') );
 		}
 
 	});

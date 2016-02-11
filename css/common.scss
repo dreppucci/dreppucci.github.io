@@ -9,6 +9,7 @@
 	'css3-mixins',
 	'vars',
 	'fontface',
+	'outdatedbrowser',
 	'buttons',
 	'header',
 	'home',
@@ -155,7 +156,7 @@ section.page-view {
 		@include crossproperty('transform', 'translate3D(0, 50px, -100px)'); @include opacity(.5);
 	}
 	.content {
-		position: relative; z-index: 2; top: 15%; text-align: center; @include crossproperty('backface-visibility', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+		position: relative; z-index: 2; top: 15%; text-align: center; @include crossproperty('backface-visibility', 'hidden'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
 
 		// BP SMALL
 		@include bp-small {
@@ -163,7 +164,7 @@ section.page-view {
 		}
 
 		h1 {
-			font-size: 5em; text-transform: uppercase; line-height: 1.2em; margin-bottom: 1em; @include crossproperty('backface-visibility', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			font-size: 5em; text-transform: uppercase; line-height: 1.2em; margin-bottom: 1em; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
 
 			// BP SMALL
 			@include bp-small {
@@ -178,7 +179,7 @@ section.page-view {
 			}
 		}
 		h2 {
-			font-size: 3em; text-transform: uppercase; line-height: 1.2em; margin-bottom: .2em; clear: both; @include crossproperty('backface-visibility', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			font-size: 3em; text-transform: uppercase; line-height: 1.2em; margin-bottom: .2em; clear: both; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
 
 			// BP SMALL
 			@include bp-small {
@@ -186,16 +187,16 @@ section.page-view {
 			}
 		}
 		h3 {
-			font-size: 2em; text-transform: uppercase; line-height: 1.2em; margin-bottom: 1em; font-weight: normal; @include crossproperty('backface-visibility', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			font-size: 2em; text-transform: uppercase; line-height: 1.2em; margin-bottom: 1em; font-weight: normal; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
 			strong {
 				font-weight: bold;
 			}
 		}
 		h4 {
-			font-size: 3em; text-transform: uppercase; line-height: 1.2em; margin-bottom: .2em; @include crossproperty('backface-visibility', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			font-size: 3em; text-transform: uppercase; line-height: 1.2em; margin-bottom: .2em; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
 		}
 		p {
-			font-size: 1.5em; line-height: 1.2em; clear: both; margin-bottom: 1em; @include crossproperty('backface-visibility', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			font-size: 1.5em; line-height: 1.2em; clear: both; margin-bottom: 1em; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
 			a {
 				color: $color-global-red;
 				&:hover {
@@ -211,7 +212,7 @@ section.page-view {
 		}
 	}
 	img[data-type=background] {
-		position: absolute; z-index: 1; left: 50%; top: 50%; @include opacity(0); @include crossproperty('backface-visibility', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+		position: absolute; z-index: 1; left: 50%; top: 50%; @include opacity(0); @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
 	}
 }
 

@@ -26,6 +26,8 @@ define([
 				$('#bt-menu').removeClass('bt-menu-open');
 				$('header, .page-view').removeClass('open');
 
+				window.ga('send', 'event', 'Button', 'Pressed', $(event.currentTarget).attr('title') );
+
 				Backbone.history.navigate(url, { trigger: true });
 			}
 		}
