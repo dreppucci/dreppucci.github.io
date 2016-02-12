@@ -15,7 +15,8 @@
 	'home',
 	'about',
 	'works',
-	'contact';
+	'contact',
+	'error';
 
 /********************/
 /* ===[ COMMON ]=== */
@@ -214,6 +215,10 @@ section.page-view {
 	img[data-type=background] {
 		position: absolute; z-index: 1; left: 50%; top: 50%; @include opacity(0); @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
 	}
+}
+
+ul {
+	@include clearfix();
 }
 
 /**************/

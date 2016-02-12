@@ -69,8 +69,8 @@ define([
 		renderSlide : function() {
 			this.resizeSlider();
 
-			_initialSlideId = null;
-			_initialSlideId = _.indexOf(this.workUrlId, this.navigate) +1;
+			var _slideIndex = (this.$el.find('.handle.main article[data-id*='+this.navigate+']').index()+1).toString();
+			_initialSlideId = _.indexOf(this.workUrlId, _slideIndex ) +1;
 
 			this.slider = new Dragdealer( this.$el.attr('id'), {
 				steps: this.collection.data.length,
@@ -113,7 +113,7 @@ define([
 				$(this.slider.wrapper).find('article').removeClass('selected from-left from-right').eq(this.currentSliderId-1).addClass(_articleClassDirection);
 				_.delay( _.bind( function() { $(this.slider.wrapper).find('article').eq(this.currentSliderId-1).addClass('selected'); }, this ), 100 );
 
-				if( !this.detail ) Backbone.history.navigate('/works/'+_getWorkUrlId+'/', {trigger: false});
+				if( !this.detail ) Backbone.history.navigate( $(this.slider.wrapper).find('article').eq(this.currentSliderId-1).data('id') , {trigger: false});
 				else $(this.slider.wrapper).find('article').eq(this.currentSliderId-1).find('.btn a').trigger('click');
 			}
 		},

@@ -1,11 +1,13 @@
 ---
 layout: work
-order: 3
-title:  Refreshing EDR
-abstract: Eugenio, Iug for his friends,<br />is a Brand Designer and Art Director
-description: In his first collection for Emilio Pucci, Creative Director Massimo Giorgetti begins his story with a blank canvas. Florence is the setting for his Pilot Episode which, as with a TV series, hints at the episodes to follow.
-keywords: art-direction, design, brand design, brand, logo
-link: http://www.eugenioderiso.com/
+date: 2015-12-07 00:00:00
+title:  Pilot Episode
+abstract: TBD
+description: TBD
+keywords: TBD
+link: http://www.emiliopucci.com/special/pilotepisode
+client_name: YOOX Net-A-Porter Group
+client_link: http://www.ynap.com/
 gallery:
   cover: sex.jpg
   medias:

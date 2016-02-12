@@ -1,4 +1,11 @@
-RewriteEngine On
+Options +MultiViews
+Options +FollowSymlinks
+
+RewriteEngine on
+RewriteBase /
+
+RewriteRule ^api/works/?$ ^api/works.json$ [NC, L]
+RewriteRule ^api/skills/?$ ^api/skills.json$ [NC, L]
 
 #404 redirect
 ErrorDocument 404 /404.html

@@ -4,7 +4,8 @@ permalink: /api/works
 
 {
 	"data": [
-		{% for work in site.works %}
+		{% assign sorted_works = (site.works | sort: 'date') | reverse %}
+		{% for work in sorted_works %}
 		{% include work.json %}{% unless forloop.last %},{% endunless %}
 		{% endfor %}
 	]

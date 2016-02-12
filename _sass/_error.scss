@@ -1,0 +1,44 @@
+/*****************/
+/*	_error.css
+/*****************/
+section.page-view {
+	&.error-view {
+		.content {
+			code {
+				font-size: 2em; line-height: 1.2em; text-align: left; width: 55%; margin: 0 auto; display: block;
+			}
+			ul {
+				display: inline; float: left; position: relative; left: 50%; list-style: none;
+				
+				// BP SMALL
+				@include bp-small {
+					display: block; float: none; max-width: 200px; margin-bottom: 2em;
+				}
+
+				li {
+					display: inline; float: left; margin: 0 1em; position: relative; right: 50%;
+
+					// BP SMALL
+					@include bp-small {
+						display: block; float: none; margin: .5em 0;
+					}
+					a {
+						@extend %btn; display: block;
+					}
+				}
+			}
+			p {
+				font-size: 1.8em; line-height: 1.6em;
+
+				span {
+					display: block;
+				}
+
+				// BP SMALL
+				@include bp-small {
+					display: none;
+				}
+			}
+		}
+	}
+}

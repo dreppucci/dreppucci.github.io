@@ -24,7 +24,7 @@ define([
 
 		render : function (){
 			return this;
-		},
+		}/*,
 
 		viewWorkDetail : function() {
 			this.workdDetailView = new WorkDetailView({ el: this.$el.find('.detail .wrapper'), model: this.model, parent: this });
@@ -35,6 +35,10 @@ define([
 			_.delay( _.bind(function() { this.workdDetailView.showRows(); }, this), 1000 );
 
 			this.parent.slider.disable();
+		}*/,
+
+		viewWorkDetail : function(event) {
+			window.ga('send', 'event', 'WorkButton', 'Pressed', $(event.currentTarget).attr('title') );
 		},
 
 		closeWorkDetail : function(event) {

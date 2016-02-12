@@ -10,10 +10,11 @@ define([
 	'views/AboutView',
 	'views/WorkView',
 	'views/ContactView',
+	'views/ErrorView',
 	'views/LoaderView',
 	'models/MainModel'
 
-], function($, _, Backbone, External, MainView, PageView, HeaderView, HomeView, AboutView, WorkView, ContactView, LoaderView, MainModel){
+], function($, _, Backbone, External, MainView, PageView, HeaderView, HomeView, AboutView, WorkView, ContactView, ErrorView, LoaderView, MainModel){
 	
 	var Router = Backbone.Router.extend({
 
@@ -87,7 +88,7 @@ define([
 		},
 
 		notFound : function() {
-			this.navigate('home', { trigger: true });
+			this.controller( new ErrorView({ model: this.mainModel }) );
 		},
 
 		controller : function( view, detail ) {

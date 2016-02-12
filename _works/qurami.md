@@ -1,11 +1,13 @@
 ---
 layout: work
-order: 4
-title:  ASd
-abstract: Eugenio, Iug for his friends,<br />is a Brand Designer and Art Director
-description: In his first collection for Emilio Pucci, Creative Director Massimo Giorgetti begins his story with a blank canvas. Florence is the setting for his Pilot Episode which, as with a TV series, hints at the episodes to follow.
-keywords: art-direction, design, brand design, brand, logo
-link: http://www.eugenioderiso.com/
+date: 2015-01-10 00:00:00
+title:  Qurami
+abstract: TBD
+description: TBD
+keywords: TBD
+link: http://www.qurami.com/
+client_name: Qurami Srl
+client_link: http://www.qurami.com/
 gallery:
   cover: sex.jpg
   medias:

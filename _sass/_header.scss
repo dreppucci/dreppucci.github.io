@@ -161,7 +161,7 @@ header {
 body {
 	&.no-js {
 		header {
-			display: none;
+			top: -100%; @include opacity(0);
 		}
 	}
 	&.scrollable {

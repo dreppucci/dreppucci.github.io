@@ -7,15 +7,19 @@ description: Take a look on what Davide Reppucci has made in these years
 
 <section class="page-view work-view" id="works-list">
 	<div class="handle main">
-		{% assign sorted_works = (site.works | sort: 'order') | reverse %}
+		{% assign sorted_works = (site.works | sort: 'date') | reverse %}
 		{% for work in sorted_works %}
-		<article>
-		
+		<article data-id="{{ work.id }}">
+
 			<div class="content">
 				<h1>{{ work.title }}</h1>
 				<h2>{{ work.abstract }}</h2>
-				<p class="btn"><a href="javascript:void(0)" title="View case study" data-id="{{ forloop.index }}"><em></em><em></em><span>View case study</span></a></p>
-				<div class="layer"></div>
+				<!--<p class="btn"><a href="javascript:void(0)" title="View case study" data-id="{{ forloop.index }}"><em></em><em></em><span>View case study</span></a></p>-->
+				<p class="btn"><a href="{{ work.link }}" target="_blank" title="Go on {{ work.link }}" data-id="{{ forloop.index }}"><em></em><em></em><span>Go on site</span></a></p>
+				{% if work.client_link %}
+				<p class="lnk-client"><a href="{{ work.client_link }}" title="This project is an idea of {{ work.client_name }}" target="_blank">This project is an idea of {{ work.client_name }}</a></p>
+				{% endif %}
+				<!--<div class="layer"></div>
 
 				<div class="detail" id="detail-{{ forloop.index }}">
 					<div class="wrapper">
@@ -41,7 +45,7 @@ description: Take a look on what Davide Reppucci has made in these years
 						</div>
 					</div>
 				</div>
-				<p class="btn-close"><a href="javascript:void(0)" title="Close">Close</a></p>
+				<p class="btn-close"><a href="javascript:void(0)" title="Close">Close</a></p>-->
 			</div>
 			{% if work.gallery.cover %}
 			<div class="background">

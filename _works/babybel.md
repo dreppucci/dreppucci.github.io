@@ -1,13 +1,13 @@
 ---
 layout: work
-order: 2
-title:  Pilot Episode
-abstract: The exotic summers of Emilio Pucci<br />in the now reinterpretation of Massimo Giorgetti
-description: In his first collection for Emilio Pucci, Creative Director Massimo Giorgetti begins his story with a blank canvas. Florence is the setting for his Pilot Episode which, as with a TV series, hints at the episodes to follow.
-keywords: fashion, yoox, ynap, luxury, home décor, perfumes
-link: http://www.emiliopucci.com/special/pilotepisode
-client_name: YOOX Net-A-Porter Group
-client_link: http://www.ynap.com/
+date: 2013-05-10 00:00:00
+title:  Babybel
+abstract: TBD
+description: TBD
+keywords: TBD
+link: http://www.babybel.it/
+client_name: Imille
+client_link: http://www.imille.it/
 gallery:
   cover: sex.jpg
   medias:
