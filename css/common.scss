@@ -237,6 +237,18 @@ ul {
 	100% { border-color: $color-global-white; }
 }
 
+@include keyframes(btnHover) {
+	0%  { width: 0;   }
+	50% { width: 100%; height: 2px; }
+	100% { width: 100%; height: 100%; }
+}
+
+@include keyframes(btnHout) {
+	0%  { width: 100%; height: 100%; }
+	50% { width: 100%; height: 2px; }
+	100% { width: 0; }
+}
+
 @include keyframes(circleAnim) {
 	0%  { @include transform(translate(-50%, -50%) scale(0)); }
 	14% { @include transform(translate(-50%, -50%) scale(.5)); }

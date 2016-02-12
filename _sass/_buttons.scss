@@ -3,37 +3,55 @@
 /*****************/
 
 %btn {
-	border: 2px $color-global-white solid; text-transform: uppercase; text-decoration: none; text-transform: uppercase; padding: .8em; font-size: .9em; color: $color-global-white; position: relative; background: none; @include transition(background 1s $default-transition-easing, border 1s $default-transition-easing); overflow: hidden; @include crossproperty('transform-origin', '50% 50%'); @include transition(box-shadow .4s $default-transition-easing);
+	border: 2px rgba($color-global-white, .5) solid; text-transform: uppercase; text-decoration: none; text-transform: uppercase; font-size: .9em; color: $color-global-white; position: relative; background: none; @include crossproperty('transform-origin', '50% 50%');
 	span {
-		position: relative; z-index: 2; display: block; height: 100%; @include transition(color .4s $default-transition-easing); @include crossproperty('transition-delay', .1s);
+		position: relative; z-index: 2; display: block; padding: .8em; @include transition(color .4s $default-transition-easing); @include crossproperty('transition-delay', .3s);
+		&:before,
+		&:after {
+			content: ''; display: block; position: absolute; z-index: 1; @include transition(width .4s $default-transition-easing, height .4s $default-transition-easing); background: $color-global-white;
+		}
+		&:before {
+			width: 0; height: 2px; bottom: -2px; right: 0;
+		}
+		&:after {
+			height: 0; width: 2px; bottom: 0; left: -2px;
+		}
 	}
 	em {
-		&:nth-child(1),
-		&:nth-child(2) {
-			width: 75%; height: 100%; top: 0; display: block; position: absolute; z-index: 1; @include transition(transform .4s $default-transition-easing); @include crossproperty('transform-origin', '50% 50%'); background-color: rgb(255, 255, 255);
-		}
-		&:nth-child(1) {
-			left: -12%; @include crossproperty('transform', 'translate3d(0, -100%, 0px) skewX(-32deg)');
-		}
-		&:nth-child(2) {
-			right: -12%; @include crossproperty('transform', 'translate3d(0, 100%, 0px) skewX(-32deg)');
-		}
+		width: 0; height: 2px; bottom: 0; left: 50%; @include crossproperty('transform', 'translateX(-50%)'); display: block; position: absolute; z-index: 1; background: $color-global-white; @include crossproperty('animation', 'btnHout 500ms ease-in-out forwards');
+	}
+	&:before,
+	&:after {
+		content: ''; display: block; position: absolute; z-index: 1; @include transition(width .4s $default-transition-easing, height .4s $default-transition-easing); background: $color-global-white;
+	}
+	&:before {
+		width: 0; height: 2px; top: -2px; left: 0;
+	}
+	&:after {
+		height: 0; width: 2px; top: 0; right: -2px;
 	}
 	@include bp-small {
 		border-width: 1px; padding: .8em; text-align: center;
 	}
 	&:hover {
 		background: none;
+		&:before {
+			width: 101.5%;
+		}
+		&:after {
+			height: 104%;
+		}
 		span {
-			color: $color-global-black; @include crossproperty('transition-delay', 0s);
+			color: $color-global-black;
+			&:before {
+				width: 101.5%;
+			}
+			&:after {
+				height: 104%;
+			}
 		}
 		em {
-			&:nth-child(1) {
-				@include crossproperty('transform', 'translate3d(0, 0, 0px) skewX(-32deg)');
-			}
-			&:nth-child(2) {
-				@include crossproperty('transform', 'translate3d(0, 0, 0px) skewX(-32deg)');
-			}
+			@include crossproperty('animation', 'btnHover 500ms ease-in-out forwards');
 		}
 	}
 }
