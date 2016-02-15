@@ -40,7 +40,9 @@ define([
 		},
 
 		pageNavigation : function(event) {
-
+			event.preventDefault();
+			event.stopPropagation();
+			
 			if( !$(event.currentTarget).hasClass('active') ) {
 				var href = $(event.currentTarget).attr('href'),
 					url = href.replace(/^\//,'').replace('\#\!\/','');

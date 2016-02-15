@@ -80,14 +80,14 @@
 .pageload-overlay {
 	position: fixed; width: 100%; height: 100%; top: 0; left: 0; visibility: hidden; z-index: 12;
 	&:after {
-		content: ''; position: fixed; width: 100px; height: 100px; top: 50%; left: 50%; margin: -50px 0 0 -50px; visibility: hidden; @include opacity(0); @include transition(opacity .15s $default-transition-easing, visibility .15s $default-transition-easing); z-index: 1000; background: url(/assets/gfx/img/lgo.svg) center center no-repeat; @include crossproperty('background-size', 'contain'); @include animation(heartbeat 1300ms ease 0s infinite normal);
+		content: ''; position: fixed; width: 100px; height: 100px; top: 50%; left: 50%; margin: -50px 0 0 -50px; visibility: hidden; @include opacity(0); @include transition(opacity .15s $transition-easing-default, visibility .15s $transition-easing-default); z-index: 1000; background: url(/assets/gfx/img/lgo.svg) center center no-repeat; @include crossproperty('background-size', 'contain'); @include animation(heartbeat 1300ms ease 0s infinite normal);
 	}
 	&.show {
 		visibility: visible;
 	}
 	&.pageload-loading {
 		&:after {
-			opacity: 1; visibility: visible; @include transition(opacity .3s $default-transition-easing);
+			opacity: 1; visibility: visible; @include transition(opacity .3s $transition-easing-default);
 		}
 	}
 	svg {
@@ -148,7 +148,7 @@ body {
 }
 
 section.page-view {
-	height: 100%; @include transition(opacity 1s $default-transition-easing, transform 1s $default-transition-easing); @include opacity(0); @include crossproperty('transform', 'translate3d(0, -50px, -100px) rotateX(-20deg)');
+	height: 100%; @include transition(opacity 1s $transition-easing-default, transform 1s $transition-easing-default); @include opacity(0); @include crossproperty('transform', 'translate3d(0, -50px, -100px) rotateX(-20deg)');
 
 	&.enter {
 		 @include opacity(1); @include crossproperty('transform', 'translate3d(0, 0, 0) rotateX(0deg)');
@@ -173,7 +173,7 @@ section.page-view {
 			}
 
 			&:after {
-				@include transition(width 2s $default-transition-easing, margin 2s $default-transition-easing); position: absolute; top: 110%; left: 50%; width: 0; height: 2px; margin-left: 0; background: $color-global-red; content: " "; display: block;
+				@include transition(width 2s $transition-easing-default, margin 2s $transition-easing-default); position: absolute; top: 110%; left: 50%; width: 0; height: 2px; margin-left: 0; background: $color-global-red; content: " "; display: block;
 			}
 			&.lined:after {
 				width: 10%; margin-left: -5%;
@@ -238,8 +238,14 @@ ul {
 }
 
 @include keyframes(btnHover) {
-	0%  { width: 0;   }
-	50% { width: 100%; height: 2px; }
+	0%  { width: 0; height: 2px; }
+	25% { width: 35%; height: 2px; }
+	50% { width: 55%; height: 2px; }
+	60% { width: 85%; height: 2px; }
+	70% { width: 100%; height: 2px; }
+	80% { width: 100%; height: 60%; }
+	85% { width: 100%; height: 70%; }
+	90% { width: 100%; height: 91%; }
 	100% { width: 100%; height: 100%; }
 }
 

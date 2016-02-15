@@ -2,7 +2,6 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'external',
 	'views/MainView',
 	'views/PageView',
 	'views/HeaderView',
@@ -14,7 +13,7 @@ define([
 	'views/LoaderView',
 	'models/MainModel'
 
-], function($, _, Backbone, External, MainView, PageView, HeaderView, HomeView, AboutView, WorkView, ContactView, ErrorView, LoaderView, MainModel){
+], function($, _, Backbone, MainView, PageView, HeaderView, HomeView, AboutView, WorkView, ContactView, ErrorView, LoaderView, MainModel){
 	
 	var Router = Backbone.Router.extend({
 
@@ -40,11 +39,11 @@ define([
 			this.initializeGA();
 
 			this.mainModel = new MainModel();
-			this.mainModel.set({'window': window, 'body': $('body'), 'width': GetClientWindowSize('width'), 'height': GetClientWindowSize('height') });
-
 			this.mainView = new MainView({ model: this.mainModel });
 			this.pageView = new PageView();
 			this.headerView = new HeaderView({ model: this.mainModel });
+
+			this.mainModel.set({'window': window, 'body': $('body'), 'width': this.pageView.GetClientWindowSize('width'), 'height': this.pageView.GetClientWindowSize('height') });
 
 			this.mainModel.get('body').append(this.mainView.render().$el);
 			this.mainModel.on('change', _.bind(this.updateTitle, this) );
@@ -129,7 +128,7 @@ define([
 		},
 
 		updateWinSize : function() {
-			this.mainModel.set({ 'width': GetClientWindowSize('width'), 'height': GetClientWindowSize('height') });
+			this.mainModel.set({ 'width': this.pageView.GetClientWindowSize('width'), 'height': this.pageView.GetClientWindowSize('height') });
 		}
 
 	});

@@ -43,7 +43,7 @@ define([
 
 		resizeImageBackground : function() {
 			this.beforeResize( _.bind( function(img) {
-				this._maxImgSize = GetClientWindowSize('width') > GetClientWindowSize('height') ? GetClientWindowSize('width') : GetClientWindowSize('height');
+				this._maxImgSize = this.GetClientWindowSize('width') > this.GetClientWindowSize('height') ? this.GetClientWindowSize('width') : this.GetClientWindowSize('height');
 	            this._maxPixel = this._maxImgSize;
 	            this._imgW = $(img)[0].naturalWidth;
 	            this._imgH = $(img)[0].naturalHeight;
@@ -80,6 +80,15 @@ define([
 			this.$el.find('.content').children().not('img[data-type=background]').css('opacity', 0).children().not('strong, em, a').css('opacity', 0);
 			TweenMax.set( this.$el.find('.content').children().not('img[data-type=background]'), { z: .1, rotationX: -10 } );
 			TweenMax.set( this.$el.find('.content').children().not('img[data-type=background]').children().not('strong, em, a, li.no-anim'), { z: .1, rotationX: -10 } );
+		},
+
+		GetClientWindowSize : function(what) {
+			if(!window.innerWidth){
+				if(!(document.documentElement.clientWidth == 0)){ w = document.documentElement.clientWidth; h = document.documentElement.clientHeight; }
+				else{ w = document.body.clientWidth; h = document.body.clientHeight; }
+			} else { w = window.innerWidth; h = window.innerHeight; }
+			if( what == 'width' ) { return w }
+			if( what == 'height' ) { return h }
 		}
 
 	});

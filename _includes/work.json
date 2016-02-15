@@ -1,7 +1,6 @@
 {
 	"id": "{{ forloop.index }}",
 	"title": "{{ work.title }}",
-	"body": "{{ work.content | strip_newlines }}",
 	"client_name": "{{ work.client_name }}",
 	"client_link": "{{ work.client_link }}",
 	"link": "{{ work.link }}",

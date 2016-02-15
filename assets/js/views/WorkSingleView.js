@@ -3,10 +3,9 @@ define([
   'underscore',
   'backbone',
   'views/PageView',
-  'views/LoaderView',
-  'views/WorkDetailView'
+  'views/LoaderView'
 
-], function ($, _, Backbone, PageView, LoaderView, WorkDetailView) {
+], function ($, _, Backbone, PageView, LoaderView) {
 	
 	var WorkSingleView = PageView.extend({
 		tagName: 'article',
@@ -24,18 +23,7 @@ define([
 
 		render : function (){
 			return this;
-		}/*,
-
-		viewWorkDetail : function() {
-			this.workdDetailView = new WorkDetailView({ el: this.$el.find('.detail .wrapper'), model: this.model, parent: this });
-			this.$el.removeClass('from-left from-right');
-
-			$('html, body').addClass('scrollable');
-			TweenMax.to( this.$el, 2, { css: { className: 'opened selected' } } );
-			_.delay( _.bind(function() { this.workdDetailView.showRows(); }, this), 1000 );
-
-			this.parent.slider.disable();
-		}*/,
+		},
 
 		viewWorkDetail : function(event) {
 			window.ga('send', 'event', 'WorkButton', 'Pressed', $(event.currentTarget).attr('title') );

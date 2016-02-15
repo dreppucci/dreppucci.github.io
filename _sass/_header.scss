@@ -3,7 +3,7 @@
 /*****************/
 
 header {
-	position: fixed; top: 0; left: 0; width: 100%; z-index: 10; @include transition(top 1.5s $default-transition-easing, opacity 1.5s $default-transition-easing);
+	position: fixed; top: 0; left: 0; width: 100%; z-index: 10; @include transition(top 1.5s $transition-easing-default, opacity 1.5s $transition-easing-default);
 	&.open {
 		.wrapper {
 			.logo {
@@ -32,23 +32,23 @@ header {
 		}
 	}
 	.layer {
-		position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; @include transition(transform .5s $default-transition-easing, opacity .5s $default-transition-easing); @include crossproperty('transform', 'translate3d(0,-100px,0)'); @include opacity(0); background: $color-global-red; @include crossproperty('transform-style', 'preserve-3d');
+		position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; @include transition(transform .5s $transition-easing-default, opacity .5s $transition-easing-default); @include crossproperty('transform', 'translate3d(0,-100px,0)'); @include opacity(0); background: $color-global-red; @include crossproperty('transform-style', 'preserve-3d');
 	}
 	.wrapper {
 		position: relative; margin: 0 auto; z-index: 2; overflow: initial;
 		.logo {
-			display: inline; float: left; padding: 15px 0; margin: 0 0 0 10px; @include transition(transform .5s $default-transition-easing); @include crossproperty('transform', 'scale(1)');
+			display: inline; float: left; padding: 15px 0; margin: 0 0 0 10px; @include transition(transform .5s $transition-easing-default); @include crossproperty('transform', 'scale(1)');
 			@include bp-small {
 				padding: 10px 0;
 			}
 			a {
-				@include transition(opacity .5s $default-transition-easing);
+				@include transition(opacity .5s $transition-easing-default);
 				&:hover {
 					@include opacity(.7);
 				}
 			}
 			svg {
-				width: 70px; height: 70px; fill: $color-global-white; @include transition(fill .5s $default-transition-easing);
+				width: 70px; height: 70px; fill: $color-global-white; @include transition(fill .5s $transition-easing-default);
 				@include bp-small {
 					width: 60px; height: 60px;
 				}
@@ -62,11 +62,11 @@ header {
 			.bt-menu-trigger {
 				display: inline; float: right; width: 30px; height: 25px; cursor: pointer; position: relative;
 				span {
-					position: absolute; top: 50%; left: 0; display: block; width: 100%; height: 2px; background-color: $color-global-white; font-size: 0px; @include crossproperty('touch-callout', 'none'); @include crossproperty('user-select', 'none'); @include transition(top .5s $default-transition-easing, transform .5s $default-transition-easing, background-color .5s $default-transition-easing);
+					position: absolute; top: 50%; left: 0; display: block; width: 100%; height: 2px; background-color: $color-global-white; font-size: 0px; @include crossproperty('touch-callout', 'none'); @include crossproperty('user-select', 'none'); @include transition(top .5s $transition-easing-default, transform .5s $transition-easing-default, background-color .5s $transition-easing-default);
 
 					&:before,
 					&:after {
-						position: absolute; left: 0; width: 100%; height: 100%; background: $color-global-white; content: ''; @include transition(transform .5s $default-transition-easing, background-color .5s $default-transition-easing);
+						position: absolute; left: 0; width: 100%; height: 100%; background: $color-global-white; content: ''; @include transition(transform .5s $transition-easing-default, background-color .5s $transition-easing-default);
 					}
 					&:before {
 						top: -300%;
@@ -76,7 +76,7 @@ header {
 					}
 				}
 				em {
-					display: block; width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; @include crossproperty('transform', 'translate(-50%, -50%) scale(0)'); @include border-radius(50%); background: rgba(255,255,255,.3); @include transition(transform .5s $default-transition-easing)
+					display: block; width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; @include crossproperty('transform', 'translate(-50%, -50%) scale(0)'); @include border-radius(50%); background: rgba(255,255,255,.3); @include transition(transform .5s $transition-easing-default);
 				}
 				&:hover {
 					span {
@@ -95,11 +95,14 @@ header {
 				li {
 					display: inline; float: left; margin: 0 10px;
 					a {
-						color: $color-global-white; text-decoration: none; font-size: 1.3em; line-height: 1em; text-transform: uppercase; @include transition(opacity .5s $default-transition-easing);
+						cursor: pointer; color: $color-global-white; text-decoration: none; font-size: 1.3em; line-height: 1em; text-transform: uppercase; @include transition(opacity .5s $transition-easing-default);
+						&:after {
+							content: " "; display: block; height: 2px; width: 0; background-color: $color-global-white; position: absolute; left: 50%; top: 120%; @include crossproperty('transform', 'translateX(-50%)'); @include transition(width .5s $transition-easing-default);
+						}
 						&.active {
 							cursor: default; position: relative;
 							&:after {
-								content: " "; display: block; height: 2px; width: 80%; background-color: $color-global-white; position: absolute; left: 50%; top: 120%; margin-left: -40%;
+								width: 80%;
 							}
 						}
 						&:hover {
@@ -117,7 +120,7 @@ header {
 			ul {
 				display: inline; float: left; margin: 0 20px 0 0; padding: 0; list-style: none; @include crossproperty('backface-visibility', 'hidden');
 				li {
-					display: inline; float: left; opacity: 0; visibility: hidden; @include transition(transform .3s $default-transition-easing, opacity .3s $default-transition-easing, visibility .3s $default-transition-easing); @include crossproperty('transform', 'translate3d(0,-25px,0)');
+					display: inline; float: left; opacity: 0; visibility: hidden; @include transition(transform .3s $transition-easing-default, opacity .3s $transition-easing-default, visibility .3s $transition-easing-default); @include crossproperty('transform', 'translate3d(0,-25px,0)');
 				}
 			}
 			&.bt-menu-open {
