@@ -7,7 +7,7 @@ description: gdlabs continously tests new technologies in order to offer good co
 keywords: Software development, web development, software solutions, mobile application, CMS, communication, design, visual, layout design, SEO
 link: http://www.gdlabs.it
 gallery:
-  cover: gdlabs.jpg
+  cover: /assets/gfx/works/gdlabs.jpg
 ---
 
 TBD

@@ -44,7 +44,9 @@ header {
 			a {
 				@include transition(opacity .5s $transition-easing-default);
 				&:hover {
-					@include opacity(.7);
+					svg {
+						fill: $color-global-red;
+					}
 				}
 			}
 			svg {

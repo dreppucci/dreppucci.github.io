@@ -9,7 +9,7 @@ link: http://www.kartell.com/salone2015
 client_name: YOOX Net-A-Porter Group
 client_link: http://www.ynap.com/
 gallery:
-  cover: kartell-salone2015.jpg
+  cover: /assets/gfx/works/kartell-salone2015.jpg
 ---
 
 TBD

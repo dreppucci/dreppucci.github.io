@@ -7,7 +7,7 @@ description: A digital agency who offers business services. Web design, seo, mar
 keywords: web agency, front-end development, seo, wordpress
 link: http://www.secretkey.it/
 gallery:
-  cover: secretkey.jpg
+  cover: /assets/gfx/works/secretkey.jpg
 ---
 
 TBD

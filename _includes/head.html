@@ -1,3 +1,16 @@
+<!--
+      ___           ___           ___           ___                    ___                    ___           ___           ___           ___     
+     /\__\         /\__\         /\  \         /\  \                  /\  \                  /\__\         /\  \         /\  \         /\  \    
+    /:/ _/_       /:/  /        /::\  \        \:\  \                /::\  \                /::|  |       /::\  \       /::\  \       /::\  \   
+   /:/ /\__\     /:/__/        /:/\:\  \        \:\  \              /:/\:\  \              /:|:|  |      /:/\:\  \     /:/\:\  \     /:/\:\  \  
+  /:/ /:/ _/_   /::\  \ ___   /::\~\:\  \       /::\  \            /::\~\:\  \            /:/|:|  |__   /::\~\:\  \   /::\~\:\  \   /:/  \:\__\ 
+ /:/_/:/ /\__\ /:/\:\  /\__\ /:/\:\ \:\__\     /:/\:\__\          /:/\:\ \:\__\          /:/ |:| /\__\ /:/\:\ \:\__\ /:/\:\ \:\__\ /:/__/ \:|__|
+ \:\/:/ /:/  / \/__\:\/:/  / \/__\:\/:/  /    /:/  \/__/          \/__\:\/:/  /          \/__|:|/:/  / \:\~\:\ \/__/ \/_|::\/:/  / \:\  \ /:/  /
+  \::/_/:/  /       \::/  /       \::/  /    /:/  /                    \::/  /               |:/:/  /   \:\ \:\__\      |:|::/  /   \:\  /:/  / 
+   \:\/:/  /        /:/  /        /:/  /     \/__/                     /:/  /                |::/  /     \:\ \/__/      |:|\/__/     \:\/:/  /  
+    \::/  /        /:/  /        /:/  /                               /:/  /                 /:/  /       \:\__\        |:|  |        \::/__/   
+     \/__/         \/__/         \/__/                                \/__/                  \/__/         \/__/         \|__|         ~~       
+-->
 	<head>
 		<title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
 
@@ -17,22 +30,22 @@
 		<meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}"/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"/>
-		<meta property="og:image" content="SHARE PROJECT IMAGE" />
+		<meta property="og:image" content="/assets/gfx/img/share.jpg" />
 		<meta property="og:image:type" content="image/jpeg" />
-		<meta property="og:image:width" content="200" />
-		<meta property="og:image:height" content="200" />
+		<meta property="og:image:width" content="1080" />
+		<meta property="og:image:height" content="720" />
 
 		<!-- Schema.org markup for Twitter -->
 		<meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}" />
 		<meta name="twitter:description" content="{% if page.abstract %}{{ page.abstract | strip_html }}{% else if page.description %}{{ page.description | strip_html }}{% else %}{{ site.description }}{% endif %}" />
-		<meta name="twitter:image:src" content="SHARE PROJECT IMAGE" />
+		<meta name="twitter:image:src" content="/assets/gfx/img/share.jpg" />
 
 		<!-- Schema.org markup for Google+ -->
 		<meta itemprop="name" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}" />
 		<meta itemprop="description" content="{% if page.abstract %}{{ page.abstract | strip_html }}{% else if page.description %}{{ page.description | strip_html }}{% else %}{{ site.description }}{% endif %}" />
-		<meta itemprop="image" content="SHARE PROJECT IMAGE" />
+		<meta itemprop="image" content="/assets/gfx/img/share.jpg" />
 
 		<!-- Schema.org markup for mobile -->
 		<meta name="apple-mobile-web-app-capable" content="yes" />

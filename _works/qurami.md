@@ -9,7 +9,7 @@ link: http://www.qurami.com/
 client_name: Qurami Srl
 client_link: http://www.qurami.com/
 gallery:
-  cover: qurami.jpg
+  cover: /assets/gfx/works/qurami.jpg
 ---
 
 TBD

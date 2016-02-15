@@ -7,7 +7,7 @@ description: Eugenio was born in Gragnano (Italy) in 1990, and, after 20 years o
 keywords: art-direction, design, brand design, brand, logo
 link: http://www.eugenioderiso.com/
 gallery:
-  cover: edr-cover.jpg
+  cover: /assets/gfx/works/edr-cover.jpg
 ---
 
 TBD

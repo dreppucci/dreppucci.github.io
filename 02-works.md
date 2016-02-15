@@ -21,7 +21,7 @@ description: Take a look on what Davide Reppucci has made in these years
 			</div>
 			{% if work.gallery.cover %}
 			<div class="background">
-				<img src="/assets/works/{{ work.gallery.cover }}" alt="{{ work.title }}" title="{{ work.title }}" data-type="background" />
+				<img src="{{ work.gallery.cover }}" alt="{{ work.title }}" title="{{ work.title }}" data-type="background" />
 			</div>
 			{% endif %}
 		</article>

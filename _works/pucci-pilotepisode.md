@@ -9,7 +9,7 @@ link: http://www.emiliopucci.com/special/pilotepisode
 client_name: YOOX Net-A-Porter Group
 client_link: http://www.ynap.com/
 gallery:
-  cover: pucci-pilotepisode.jpg
+  cover: /assets/gfx/works/pucci-pilotepisode.jpg
 ---
 
 TBD

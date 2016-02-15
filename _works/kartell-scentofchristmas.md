@@ -9,7 +9,7 @@ link: http://www.kartell.com/special/scent-of-xmas
 client_name: YOOX Net-A-Porter Group
 client_link: http://www.ynap.com/
 gallery:
-  cover: kartell-scentofchristmas.jpg
+  cover: /assets/gfx/works/kartell-scentofchristmas.jpg
 ---
 
 TBD

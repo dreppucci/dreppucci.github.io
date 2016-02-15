@@ -9,7 +9,7 @@ link: http://www.babybel.it/
 client_name: Imille
 client_link: http://www.imille.it/
 gallery:
-  cover: babybel.jpg
+  cover: /assets/gfx/works/babybel.jpg
 ---
 
 TBD

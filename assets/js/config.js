@@ -17,7 +17,6 @@ require.config({
 		iscroll : 'plugins/iscroll',
 		svgloader : 'plugins/svgloader',
 		snapsvg : 'plugins/snapsvg',
-		vivus : 'plugins/vivus',
 		templates: 'templates',
 		main: 'views/MainView'
 	},
@@ -35,11 +34,6 @@ require.config({
 		'svgloader' : {
 			deps : [
 				'snapsvg'
-			]
-		},
-		'vivus' : {
-			deps : [
-				'jquery'
 			]
 		},
 		'text' : {
