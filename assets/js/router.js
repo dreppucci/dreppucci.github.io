@@ -2,6 +2,8 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'pace',
+	'tweenmax',
 	'views/MainView',
 	'views/PageView',
 	'views/HeaderView',
@@ -10,10 +12,9 @@ define([
 	'views/WorkView',
 	'views/ContactView',
 	'views/ErrorView',
-	'views/LoaderView',
 	'models/MainModel'
 
-], function($, _, Backbone, MainView, PageView, HeaderView, HomeView, AboutView, WorkView, ContactView, ErrorView, LoaderView, MainModel){
+], function($, _, Backbone, pace, TweenMax, MainView, PageView, HeaderView, HomeView, AboutView, WorkView, ContactView, ErrorView, MainModel){
 	
 	var Router = Backbone.Router.extend({
 
@@ -27,14 +28,14 @@ define([
 			'works/': 'getWorksList',
 			'works/:id': 'getWorksList',
 			'works/:id/': 'getWorksList',
-			'works/:id/detail': 'getWorkDetail',
-			'works/:id/detail/': 'getWorkDetail',
 			'contact': 'getContact',
 			'contact/': 'getContact',
 			'*notFound': 'notFound'
 		},
 
 		initialize: function(){
+
+			pace.start();
 
 			this.initializeGA();
 
@@ -47,6 +48,8 @@ define([
 
 			this.mainModel.get('body').append(this.mainView.render().$el);
 			this.mainModel.on('change', _.bind(this.updateTitle, this) );
+
+			window.transitionEvent = this.pageView.whichTransitionEvent();
 
 			TweenMax.lagSmoothing(0);
 			TweenMax.force3D = true;
@@ -78,10 +81,6 @@ define([
 			this.controller( new WorkView({ model: this.mainModel, section: id }) );
 		},
 
-		getWorkDetail : function(id) {
-			this.controller( new WorkView({ model: this.mainModel, section: id }), true );
-		},
-
 		getContact : function() {
 			this.controller( new ContactView({ model: this.mainModel }) );
 		},
@@ -90,37 +89,45 @@ define([
 			this.controller( new ErrorView({ model: this.mainModel }) );
 		},
 
-		controller : function( view, detail ) {
-
-			LoaderView.trigger('preloadStarted');
+		controller : function( view ) {
 
 			window.ga('send', 'event', 'Page', 'Requested', this.mainModel.get('title') );
-
-			if( this.mainModel.get('current') !== null ) this.mainModel.previous('current').$el.removeClass('enter');
 			if( this.mainModel.get('current') === null ) {
 				$('.page-view').remove();
 				$('body').removeClass('no-js');
 			}
 
-			if( this.mainModel.get('current') !== null ) this.mainModel.set({ 'prev': this.mainModel.previous('current') });
-			
+			if( this.mainModel.get('current') !== null ) {
+				this.mainModel.previous('current').$el.removeClass('enter');
+				this.mainModel.set({ 'prev': this.mainModel.previous('current') });
+				this.mainModel.previous('current').unrender();
+			}
+
+			this.mainModel.set({'current': view });
+			this.mainView.$el.append(view.render().$el);
+			window.ga('send', 'event', 'Page', 'Loaded', this.mainModel.get('title') );
+
+			if( Modernizr.csstransitions ) {
+				if( this.mainModel.get('prev') !== null ) {
+					$('body').one(transitionEvent, this.mainModel.get('prev'), _.bind( function() {
+						this.showPageView();
+					}, this ) );
+				} else this.showPageView();
+			} else {
+				_.delay( _.bind( function() {
+					this.showPageView();
+				}, this ), 600, 'view changed');
+			}
+		},
+
+		showPageView : function() {
 			_.delay( _.bind( function() {
-				if( this.mainModel.get('current') !== null ) this.mainModel.previous('current').unrender();
-				
-				this.mainModel.set({'current': view });
-
+				this.mainModel.get('current').$el.addClass('enter');
 				window.ga('send', 'event', 'Page', 'Loaded', this.mainModel.get('title') );
+			}, this ), 500);
 
-				if( detail !== 'undefined' ) view.detail = detail;
-				this.mainView.$el.append(view.render().$el);
-
-				_.delay( function() { view.$el.addClass('enter'); }, 1000);
-
-				this.headerView.$el.find('ul li a').removeClass('active');
-				this.headerView.$el.find('ul li a[href*="'+Backbone.history.fragment.split('/')[0]+'"]').addClass('active');
-
-				return view;
-			}, this ), 600, 'view changed');
+			this.headerView.$el.find('ul li a').removeClass('active');
+			this.headerView.$el.find('ul li a[href*="'+Backbone.history.fragment.split('/')[0]+'"]').addClass('active');
 		},
 
 		updateTitle : function() {

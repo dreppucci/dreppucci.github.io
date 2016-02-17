@@ -1,10 +1,9 @@
 define([
   'jquery',
   'underscore',
-  'backbone',
-  'views/LoaderView'
+  'backbone'
 
-], function ($, _, Backbone, LoaderView) {
+], function ($, _, Backbone) {
 	
 	var PageView = Backbone.View.extend({
 		className: 'page-view',
@@ -12,13 +11,8 @@ define([
 		detail: false,
 
 		render : function (){
-			LoaderView.trigger('preloadCompleted');
-
-			var _customClass = this.model.get('title').toLowerCase() +'-view '+ this.className;
-			this.$el.attr('class', _customClass );
 
 			_.defer( _.bind( function() {
-				this.hideContent();
 				this.resizeImageBackground();
 				$(window).on('resize', _.bind( this.resizeImageBackground, this) );
 			}, this ) );
@@ -27,9 +21,11 @@ define([
 		},
 
 		unrender : function() {
-			$(window).off('resize', _.bind( this.resizeImageBackground, this) );
-			this.remove();
-			this.unbind();
+			$('body').one(transitionEvent, this.$el, _.bind( function() {
+				$(window).off('resize', _.bind( this.resizeImageBackground, this) );
+				this.remove();
+				this.unbind();
+			}, this ) );
 		},
 
 		beforeResize : function( callback ) {
@@ -89,6 +85,24 @@ define([
 			} else { w = window.innerWidth; h = window.innerHeight; }
 			if( what == 'width' ) { return w }
 			if( what == 'height' ) { return h }
+		},
+		
+		whichTransitionEvent : function(){
+			var t,
+				el = document.createElement("fakeelement");
+
+			var transitions = {
+				"transition"      : "transitionend",
+				"OTransition"     : "oTransitionEnd",
+				"MozTransition"   : "transitionend",
+				"WebkitTransition": "webkitTransitionEnd"
+			}
+
+			for (t in transitions){
+				if (el.style[t] !== undefined){
+					return transitions[t];
+				}
+			}
 		}
 
 	});

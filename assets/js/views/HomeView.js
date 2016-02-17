@@ -3,12 +3,13 @@ define([
   'underscore',
   'backbone',
   'views/PageView',
-  'views/LoaderView',
   'text!../../../index.html'
 
-], function ($, _, Backbone, PageView, LoaderView, HomeTemplate) {
+], function ($, _, Backbone, PageView, HomeTemplate) {
 	
 	var HomeView = PageView.extend({
+
+		className: 'home-view page-view',
 
 		initialize : function () {
 			this.$el.prepend($(HomeTemplate).find('.page-view').html());

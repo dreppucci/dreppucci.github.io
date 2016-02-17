@@ -3,12 +3,13 @@ define([
   'underscore',
   'backbone',
   'views/PageView',
-  'views/LoaderView',
   'text!../../../contact/index.html'
 
-], function ($, _, Backbone, PageView, LoaderView, ContactTemplate) {
+], function ($, _, Backbone, PageView, ContactTemplate) {
 	
 	var ContactView = PageView.extend({
+
+		className: 'contact-view page-view',
 
 		events : {
 			'click ul a': 'trackOutBoundLinks'

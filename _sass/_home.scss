@@ -17,6 +17,7 @@ section.page-view {
 
 				li {
 					display: inline; float: left; margin: 0 1em; position: relative; right: 50%;
+					@include opacity(0); @include crossproperty('transform', 'translate3d(0, -10px, 0)');
 
 					// BP SMALL
 					@include bp-small {

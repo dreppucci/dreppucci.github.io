@@ -14,9 +14,7 @@ require.config({
 		text : 'framework/text',
 		easing : 'plugins/easing',
 		dragdealer : 'plugins/dragdealer',
-		iscroll : 'plugins/iscroll',
-		svgloader : 'plugins/svgloader',
-		snapsvg : 'plugins/snapsvg',
+		pace: 'plugins/pace.min',
 		templates: 'templates',
 		main: 'views/MainView'
 	},
@@ -31,9 +29,9 @@ require.config({
 				'jquery'
 			]
 		},
-		'svgloader' : {
+		'pace' : {
 			deps : [
-				'snapsvg'
+				'jquery'
 			]
 		},
 		'text' : {
@@ -48,9 +46,6 @@ require.config({
 		},
 		'tweenmax' : {
 			exports : 'TweenMax'
-		},
-		'iscroll' : {
-			exports : 'IScroll'
 		},
 		'underscore' : {
 			exports : '_'

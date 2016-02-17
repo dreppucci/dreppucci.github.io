@@ -25,26 +25,6 @@
 ::-moz-selection { background: $color-global-red; color: $color-global-white; text-shadow: none; }
 ::selection { background: $color-global-red; color: $color-global-white; text-shadow: none; }
 
-/**********************/
-/* ===[ FONTELLO ]=== */
-/**********************/
-[class^="icon-"]:before, [class*=" icon-"]:before {
-	font-family: "fontello";
-	font-style: normal;
-	font-weight: normal;
-	speak: none;
-
-	display: inline-block;
-	text-decoration: inherit;
-	width: 1em;
-	margin-right: .2em;
-	text-align: center;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1em;
-	margin-left: .2em;
-}
-
 /******************/
 /* ===[ GRID ]=== */
 /******************/
@@ -77,24 +57,18 @@
 /*********************/
 /* ===[ LOADING ]=== */
 /*********************/
-.pageload-overlay {
-	position: fixed; width: 100%; height: 100%; top: 0; left: 0; visibility: hidden; z-index: 12;
-	&:after {
-		content: ''; position: fixed; width: 100px; height: 100px; top: 50%; left: 50%; margin: -50px 0 0 -50px; visibility: hidden; @include opacity(0); @include transition(opacity .15s $transition-easing-default, visibility .15s $transition-easing-default); z-index: 1000; background: url(/assets/gfx/img/lgo.svg) center center no-repeat; @include crossproperty('background-size', 'contain'); @include animation(heartbeat 1300ms ease 0s infinite normal);
-	}
-	&.show {
-		visibility: visible;
-	}
-	&.pageload-loading {
-		&:after {
-			opacity: 1; visibility: visible; @include transition(opacity .3s $transition-easing-default);
+.pace {
+	@include crossproperty('pointer-events', 'none'); @include crossproperty('user-select', 'none'); @include transition(opacity 1s $transition-easing-default);
+	&.pace-inactive {
+		@include opacity(0); @include crossproperty('transition-delay', 1s);
+
+		.pace-progress {
+			height: 0;
 		}
 	}
-	svg {
-		position: absolute; top: 0; left: 0; pointer-events: none;
-		path {
-			fill: $color-global-red;
-		}
+
+	.pace-progress {
+		background: $color-global-red; position: fixed; z-index: 2000; bottom: 0; right: 100%; width: 100%; height: 4px; @include transition(height 1s $transition-easing-default, transform 1s $transition-easing-default);
 	}
 }
 
@@ -166,6 +140,7 @@ section.page-view {
 
 		h1 {
 			font-size: 5em; text-transform: uppercase; line-height: 1.2em; margin-bottom: 1em; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			@include opacity(0); @include crossproperty('transform', 'translate3d(0, -10px, 0)');
 
 			// BP SMALL
 			@include bp-small {
@@ -181,6 +156,7 @@ section.page-view {
 		}
 		h2 {
 			font-size: 3em; text-transform: uppercase; line-height: 1.2em; margin-bottom: .2em; clear: both; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			@include opacity(0); @include crossproperty('transform', 'translate3d(0, -10px, 0)');
 
 			// BP SMALL
 			@include bp-small {
@@ -189,15 +165,18 @@ section.page-view {
 		}
 		h3 {
 			font-size: 2em; text-transform: uppercase; line-height: 1.2em; margin-bottom: 1em; font-weight: normal; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			@include opacity(0); @include crossproperty('transform', 'translate3d(0, -10px, 0)');
 			strong {
 				font-weight: bold;
 			}
 		}
 		h4 {
 			font-size: 3em; text-transform: uppercase; line-height: 1.2em; margin-bottom: .2em; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			@include opacity(0); @include crossproperty('transform', 'translate3d(0, -10px, 0)');
 		}
 		p {
 			font-size: 1.5em; line-height: 1.2em; clear: both; margin-bottom: 1em; @include crossproperty('transform-style', 'preserve-3d'); @include crossproperty('perspective', '1000'); @include crossproperty('backface-visibility', 'hidden');
+			@include opacity(0); @include crossproperty('transform', 'translate3d(0, -10px, 0)');
 			a {
 				color: $color-global-red;
 				&:hover {
@@ -207,6 +186,7 @@ section.page-view {
 		}
 		ul {
 			margin-bottom: 1em; display: inline; float: left; position: relative; left: 50%; clear: both;
+			@include opacity(0); @include crossproperty('transform', 'translate3d(0, -10px, 0)');
 			li {
 				font-size: 1.5em; line-height: 1.2em; margin: 0 0 .2em; text-align: left; list-style: disc inside; position: relative; right: 50%; white-space: nowrap;
 			}
@@ -224,14 +204,6 @@ ul {
 /**************/
 /* ANIMATIONS */
 /**************/
-@include keyframes(heartbeat) {
-	0%  { @include transform(scale(1));   }
-	14% { @include transform(scale(1.3)); }
-	28% { @include transform(scale(1));   }
-	42% { @include transform(scale(1.3)); }
-	70% { @include transform(scale(1));   }
-}
-
 @include keyframes(borderenter) {
 	0% { border-color: transparent }
 	100% { border-color: $color-global-white; }

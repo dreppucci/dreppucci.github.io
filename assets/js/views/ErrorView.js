@@ -3,14 +3,13 @@ define([
 	'underscore',
 	'backbone',
 	'views/PageView',
-	'views/LoaderView',
 	'text!../../../404.html'
 
-], function ($, _, Backbone, PageView, LoaderView, ErrorTemplate) {
+], function ($, _, Backbone, PageView, ErrorTemplate) {
 	
 	var ErrorView = PageView.extend({
 
-		className: 'page-view error-view',
+		className: 'error-view page-view',
 
 		initialize : function () {
 			this.$el.append($(ErrorTemplate).find('.page-view').html());

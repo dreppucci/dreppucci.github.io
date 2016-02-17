@@ -2,19 +2,18 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'iscroll',
+  //'iscroll',
   'dragdealer',
   'views/PageView',
-  'views/LoaderView',
   'views/WorkSingleView',
   'collections/WorksCollection',
   'text!../../../works/index.html'
 
-], function ($, _, Backbone, IScroll, Dragdealer, PageView, LoaderView, WorkSingleView, WorksCollection, WorkTemplate) {
+], function ($, _, Backbone/*, IScroll*/, Dragdealer, PageView, WorkSingleView, WorksCollection, WorkTemplate) {
 	
 	var WorkView = PageView.extend({
 		id: 'works-list',
-		className: 'page-view works-view',
+		className: 'works-view page-view',
 		workUrlId: new Array(),
 		currentSliderId: null,
 		oldSliderId: null,
@@ -49,8 +48,6 @@ define([
 
 		render : function (){
 			this.before( _.bind( function(collection, response) {
-
-				LoaderView.trigger('preloadCompleted');
 
 				this.collection = collection;
 

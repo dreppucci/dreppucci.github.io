@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone'
 
-], function ($, _, Backbone, LoaderView) {
+], function ($, _, Backbone) {
 	
 	var MainView = Backbone.View.extend({
 		el: $('.app-view'),

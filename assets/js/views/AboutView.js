@@ -3,14 +3,14 @@ define([
   'underscore',
   'backbone',
   'views/PageView',
-  'views/LoaderView',
   'collections/SkillsCollection',
   'text!../../../about/index.html'
 
-], function ($, _, Backbone, PageView, LoaderView, SkillsCollection, AboutTemplate) {
+], function ($, _, Backbone, PageView, SkillsCollection, AboutTemplate) {
 	
 	var AboutView = PageView.extend({
 
+		className: 'about-view page-view',
 		collection: null,
 		skillsLiIndex : -1,
 		skillTemplate: _.template('<li class="last"><em class="left"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="192px" height="320px" viewBox="160 96 192 320" enable-background="new 160 96 192 320" xml:space="preserve"><polygon points="352,115.4 331.3,96 160,256 331.3,416 352,396.7 201.5,256 "/></svg></em><%= skill %><em class="right"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="192px" height="320px" viewBox="160 96 192 320" enable-background="new 160 96 192 320" xml:space="preserve"><polygon points="160,115.4 180.7,96 352,256 180.7,416 160,396.7 310.5,256 "/></svg></em></li>'),
@@ -43,15 +43,9 @@ define([
 		render : function() {
 			this.before( _.bind( function(collection, response) {
 
-				LoaderView.trigger('preloadCompleted');
-
 				this.collection = collection;
 
-				var _customClass = this.model.get('title').toLowerCase() +'-view '+ this.className;
-				this.$el.attr('class', _customClass );
-
 				_.defer( _.bind( function() {
-					this.hideContent();
 					this.resizeImageBackground();
 
 					this.showSkill();

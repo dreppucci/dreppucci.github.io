@@ -2,10 +2,9 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'views/PageView',
-  'views/LoaderView'
+  'views/PageView'
 
-], function ($, _, Backbone, PageView, LoaderView) {
+], function ($, _, Backbone, PageView) {
 	
 	var WorkSingleView = PageView.extend({
 		tagName: 'article',
