@@ -17,7 +17,7 @@ define([
 		},
 
 		initialize : function () {
-		    this.menu = $('#bt-menu');
+		    this.menu = this.$el.find('#bt-menu');
 		},
 
 		hamTrigger : function(event) {
@@ -49,9 +49,10 @@ define([
 
 				if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) event.preventDefault();
 
-				$('html, body').removeClass('scrollable');
 				this.menu.removeClass('bt-menu-open');
 				$('header, .page-view').removeClass('open');
+
+				window.ga('send', 'event', 'HeaderButton', 'Pressed', $(event.currentTarget).attr('title') );
 
 				Backbone.history.navigate(url, { trigger: true });
 			}

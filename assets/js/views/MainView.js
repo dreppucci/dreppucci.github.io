@@ -9,7 +9,8 @@ define([
 		el: $('.app-view'),
 
 		events : {
-			'click a[data-behavior="internal"]': 'pageNavigation'
+			'click a[data-behavior="internal"]': 'pageNavigation',
+			'click': 'closeHeader'
 		},
 
 		render : function (){
@@ -17,6 +18,9 @@ define([
 		},
 
 		pageNavigation : function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+
 			if( !$(event.currentTarget).hasClass('active') ) {
 				var href = $(event.currentTarget).attr('href'),
 					url = href.replace(/^\//,'').replace('\#\!\/','');
@@ -30,6 +34,11 @@ define([
 
 				Backbone.history.navigate(url, { trigger: true });
 			}
+		},
+
+		closeHeader : function() {
+			$('#bt-menu').removeClass('bt-menu-open');
+			$('header, .page-view').removeClass('open');
 		}
 
 	});

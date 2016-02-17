@@ -31,6 +31,10 @@ section.page-view {
 					}
 					h2 {
 						@include transition(opacity 1.5s $transition-easing-default, transform 1.5s $transition-easing-default, color 1.5s $transition-easing-default); @include opacity(0); @include crossproperty('transform', 'translateY(-40px)'); @include crossproperty('transition-delay', .2s); font-weight: normal; font-size: 2em; text-transform: none; position: absolute; top: 35%; left: 0; text-align: center; width: 100%; margin: 0;
+
+						@include bp-small {
+							font-size: 1.8em; line-height: 1.5em;
+						}
 					}
 					.btn {
 						@include transition(opacity 1.5s $transition-easing-default, transform 1.5s $transition-easing-default); @include opacity(0); @include crossproperty('transform', 'translateY(-50px) translateX(-50%)'); @include crossproperty('transition-delay', .3s); position: absolute; top: 55%; left: 50%; text-align: center; display: inline; float: left; margin: 0;
@@ -39,7 +43,7 @@ section.page-view {
 						}
 					}
 					.lnk-client {
-						@include transition(opacity 1.5s $transition-easing-default, transform 1.5s $transition-easing-default); @include opacity(0); @include crossproperty('transform', 'translateY(-50px) translateX(-50%)'); @include crossproperty('transition-delay', .4s); position: absolute; bottom: 15%; left: 50%; text-align: center; display: inline; float: left; margin: 0;
+						@include transition(opacity 1.5s $transition-easing-default, transform 1.5s $transition-easing-default); @include opacity(0); @include crossproperty('transform', 'translateY(-50px)'); @include crossproperty('transition-delay', .4s); position: absolute; bottom: 15%; left: 20%; right: 20%; text-align: center; display: inline; float: left; margin: 0;
 						a {
 							color: $color-global-white; font-size: .7em; text-decoration: none;
 						}
@@ -53,7 +57,7 @@ section.page-view {
 						.wrapper {
 							width: 100%; height: 100%; position: absolute; z-index: 11; @include crossproperty('transform', 'translateZ(0)'); @include crossproperty('user-select', 'none'); @include crossproperty('text-size-adjust', 'none'); @include crossproperty('touch-callout', 'none');
 							.scroller {
-								width: $wrapper-width*.7; padding: 250px 0 4em; margin: 0 auto; text-align: left;
+								width: 980px*.7; padding: 250px 0 4em; margin: 0 auto; text-align: left;
 
 								// BP MEDIUM
 								@include bp-medium {
@@ -184,7 +188,7 @@ section.page-view {
 							@include opacity(1); @include crossproperty('transform', 'translateY(0) translateX(-50%)');
 						}
 						.lnk-client {
-							@include opacity(1); @include crossproperty('transform', 'translateY(0) translateX(-50%)');
+							@include opacity(1); @include crossproperty('transform', 'translateY(0)');
 						}
 					}
 				}

@@ -8,11 +8,5 @@ $color-global-red: #ef0000;
 
 $font-family-standard: Montserrat, Arial, sans-serif;
 
-$wrapper-width: 980px;
-$totalColumns  	: 20;
-$columnWidth 	: 39px;
-$gutterWidth  	: 10px;
-$gridWidth      : $totalColumns * ($columnWidth + $gutterWidth);
-
 $transition-easing-default: cubic-bezier(0.230, 1.000, 0.320, 1.000);
 $transition-easing-buttons: cubic-bezier(1.000, 0.140, 0.080, 0.885);

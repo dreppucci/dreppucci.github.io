@@ -12,9 +12,17 @@
 		}
 		&:before {
 			width: 0; height: 2px; bottom: -2px; right: 0;
+
+			@include bp-small {
+				height: 1px; bottom: -1px;
+			}
 		}
 		&:after {
 			height: 0; width: 2px; bottom: 0; left: -2px;
+
+			@include bp-small {
+				width: 1px; left: -1px;
+			}
 		}
 	}
 	em {
@@ -26,28 +34,52 @@
 	}
 	&:before {
 		width: 0; height: 2px; top: -2px; left: 0;
+
+		@include bp-small {
+			height: 1px; top: -1px;
+		}
 	}
 	&:after {
 		height: 0; width: 2px; top: 0; right: -2px;
+
+		@include bp-small {
+			width: 1px; right: -1px;
+		}
 	}
 	@include bp-small {
-		border-width: 1px; padding: .8em; text-align: center;
+		border-width: 1px; text-align: center;
 	}
 	&:hover {
 		background: none;
 		&:before {
 			width: 101.5%;
+
+			@include bp-small {
+				width: 100.5%;
+			}
 		}
 		&:after {
 			height: 104%;
+
+			@include bp-small {
+				height: 102.5%;
+			}
 		}
 		span {
 			color: $color-global-black;
 			&:before {
 				width: 101.5%;
+
+				@include bp-small {
+					width: 100.5%;
+				}
 			}
 			&:after {
 				height: 104%;
+
+				@include bp-small {
+					height: 101.5%;
+				}
 			}
 		}
 		em {

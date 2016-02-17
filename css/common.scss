@@ -25,35 +25,6 @@
 ::-moz-selection { background: $color-global-red; color: $color-global-white; text-shadow: none; }
 ::selection { background: $color-global-red; color: $color-global-white; text-shadow: none; }
 
-/******************/
-/* ===[ GRID ]=== */
-/******************/
-.grids {
-	width: auto;
-	max-width: $gridWidth;
-	margin-left: -(percentage( $gutterWidth / $gridWidth ));
-	clear: both;
-	list-style: none;
-	overflow: hidden;
-}
-
-// Generates placeholders instead of styles, these won't be output in our CSS
-@for $i from 1 to ($totalColumns + 1) {
-	.grid_#{$i}{
-		@include column($i);
-	}
-
-}
-[class^="grid_"] {
-	float: left;
-	&.alpha {
-		margin-left: 0;
-	}
-	&.omega {
-		margin-right: 0;
-	}
-}
-
 /*********************/
 /* ===[ LOADING ]=== */
 /*********************/
@@ -69,6 +40,11 @@
 
 	.pace-progress {
 		background: $color-global-red; position: fixed; z-index: 2000; bottom: 0; right: 100%; width: 100%; height: 4px; @include transition(height 1s $transition-easing-default, transform 1s $transition-easing-default);
+	}
+}
+body.works {
+	.pace {
+		@include opacity(0);
 	}
 }
 

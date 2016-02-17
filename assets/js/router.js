@@ -35,7 +35,15 @@ define([
 
 		initialize: function(){
 
-			pace.start();
+			pace.start({
+				ajax: {
+					ignoreURLs: [
+						'www.google-analytics.com',
+						'favicon',
+						'collect'
+					]
+				}
+			});
 
 			this.initializeGA();
 
@@ -48,6 +56,7 @@ define([
 
 			this.mainModel.get('body').append(this.mainView.render().$el);
 			this.mainModel.on('change', _.bind(this.updateTitle, this) );
+			this.mainModel.on('change', _.bind(this.updateBodyClass, this) );
 
 			window.transitionEvent = this.pageView.whichTransitionEvent();
 
@@ -132,6 +141,13 @@ define([
 
 		updateTitle : function() {
 			document.title = this.mainModel.get('title') + this.mainModel.get('defaultTitle');
+		},
+
+		updateBodyClass : function() {
+			if( this.mainModel.get('current') !== null ) {
+				if( this.mainModel.get('current').$el.hasClass('works-view') ) $('body').addClass('works');
+				else $('body').removeClass('works');
+			}
 		},
 
 		updateWinSize : function() {

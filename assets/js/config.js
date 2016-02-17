@@ -4,7 +4,7 @@
 
 require.config({
 	baseUrl: '/assets/js/',
-	urlArgs : "v=" + (new Date()).getTime(),
+	urlArgs : 'v=0.2',
 	waitSeconds: 60,
 	paths: {
 		jquery: 'framework/jquery',

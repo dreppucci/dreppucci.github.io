@@ -35,7 +35,7 @@ header {
 		position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; @include transition(transform .5s $transition-easing-default, opacity .5s $transition-easing-default); @include crossproperty('transform', 'translate3d(0,-100px,0)'); @include opacity(0); background: $color-global-red; @include crossproperty('transform-style', 'preserve-3d');
 	}
 	.wrapper {
-		position: relative; margin: 0 auto; z-index: 2; overflow: initial;
+		position: relative; margin: 0 auto; width: auto; max-width: 980px; z-index: 2; overflow: initial;
 		.logo {
 			display: inline; float: left; padding: 15px 0; margin: 0 0 0 10px; @include transition(transform .5s $transition-easing-default); @include crossproperty('transform', 'scale(1)');
 			@include bp-small {
