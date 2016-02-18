@@ -59,6 +59,7 @@ define([
 			this.mainModel.on('change', _.bind(this.updateBodyClass, this) );
 
 			window.transitionEvent = this.pageView.whichTransitionEvent();
+			if( this.pageView.checkBrowser('safari') ) $('body').addClass('safari');
 
 			TweenMax.lagSmoothing(0);
 			TweenMax.force3D = true;

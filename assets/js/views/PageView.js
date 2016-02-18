@@ -66,9 +66,9 @@ define([
 
 		animImg : function( img, callback ) {
 			if( $(img).css('opacity') == 0 ) {
-            	TweenMax.set( $(img), { scale: 1.1, z: .1 } );
+            	TweenMax.set( $(img), { scale: 1.1, z: 0 } );
 	            TweenMax.to( $(img), 2, { opacity: .6, ease: Expo.easeInOut, onComplete: $.proxy( function() { callback.apply(this); }, this ) } );
-	            TweenMax.to( $(img), 10, { scale: 1, z: .1, ease: Expo.Quad } );
+	            TweenMax.to( $(img), 10, { scale: 1, z: 0, ease: Expo.Quad } );
 	        }
 		},
 
@@ -78,13 +78,38 @@ define([
 			TweenMax.set( this.$el.find('.content').children().not('img[data-type=background]').children().not('strong, em, a, li.no-anim'), { z: .1, rotationX: -10 } );
 		},
 
+		checkBrowser : function(browser) {
+			var is_chrome = navigator.userAgent.indexOf('Chrome') > -1,
+				is_explorer = navigator.userAgent.indexOf('MSIE') > -1,
+				is_firefox = navigator.userAgent.indexOf('Firefox') > -1,
+				is_safari = navigator.userAgent.indexOf("Safari") > -1,
+				is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+			if ((is_chrome)&&(is_safari)) {is_safari=false;}
+			if ((is_chrome)&&(is_opera)) {is_chrome=false;}
+
+			switch(browser) {
+				case 'chrome':
+					return is_chrome;
+				case 'explorer':
+					return is_explorer;
+				case 'firefox':
+					return is_firefox;
+				case 'safari':
+					return is_safari;
+				case 'opera':
+					return is_opera;
+				default:
+					return is_chrome;
+			}
+		},
+
 		GetClientWindowSize : function(what) {
 			if(!window.innerWidth){
 				if(!(document.documentElement.clientWidth == 0)){ w = document.documentElement.clientWidth; h = document.documentElement.clientHeight; }
 				else{ w = document.body.clientWidth; h = document.body.clientHeight; }
 			} else { w = window.innerWidth; h = window.innerHeight; }
-			if( what == 'width' ) { return w }
-			if( what == 'height' ) { return h }
+			if( what === 'width' ) { return w }
+			if( what === 'height' ) { return h }
 		},
 		
 		whichTransitionEvent : function(){

@@ -14,7 +14,7 @@ description: Take a look on what Davide Reppucci has made in these years
 			<div class="content">
 				<h1>{{ work.title }}</h1>
 				<h2>{{ work.abstract }}</h2>
-				<p class="btn"><a href="{{ work.link }}" target="_blank" title="Go on {{ work.link }}" data-id="{{ forloop.index }}"><em></em><em></em><span>Go on site</span></a></p>
+				<p class="btn {% if work.client_link %}care-lnk-client{% endif %}"><a href="{{ work.link }}" target="_blank" title="Go on {{ work.link }}" data-id="{{ forloop.index }}"><em></em><em></em><span>Go on site</span></a></p>
 				{% if work.client_link %}
 				<p class="lnk-client"><a href="{{ work.client_link }}" title="All rights belong to {{ work.client_name }}" target="_blank">All rights belong to {{ work.client_name }}</a></p>
 				{% endif %}
