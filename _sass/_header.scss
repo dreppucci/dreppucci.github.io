@@ -39,7 +39,7 @@ header {
 		.logo {
 			display: inline; float: left; padding: 15px 0; margin: 0 0 0 10px; @include transition(transform .5s $transition-easing-default); @include crossproperty('transform', 'scale(1)');
 			@include bp-small {
-				padding: 10px 0;
+				padding: 10px 0; margin: 0 0 0 20px;
 			}
 			a {
 				@include transition(opacity .5s $transition-easing-default);
@@ -59,7 +59,7 @@ header {
 		nav {
 			position: absolute; top: 37px; right: 10px; @include crossproperty('backface-visibility', 'hidden');
 			@include bp-small {
-				top: 27px;
+				top: 27px; right: 20px;
 			}
 			.bt-menu-trigger {
 				display: inline; float: right; width: 30px; height: 25px; cursor: pointer; position: relative;
@@ -123,6 +123,11 @@ header {
 				display: inline; float: left; margin: 0 20px 0 0; padding: 0; list-style: none; @include crossproperty('backface-visibility', 'hidden');
 				li {
 					display: inline; float: left; opacity: 0; visibility: hidden; @include transition(transform .3s $transition-easing-default, opacity .3s $transition-easing-default, visibility .3s $transition-easing-default); @include crossproperty('transform', 'translate3d(0,-25px,0)');
+				}
+
+				// BP SMALL
+				@include bp-small {
+					margin: 3px 5px 0 0;
 				}
 			}
 			&.bt-menu-open {

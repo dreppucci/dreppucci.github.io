@@ -63,11 +63,11 @@ define([
 			TweenMax.to( this.$el.find('.content h1'), this.model.get('tweenAnimDuration'), { opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
 			_.delay( _.bind( function() { this.$el.find('.content h1').addClass('lined'); }, this), 800 );
 			TweenMax.to( this.$el.find('.content h2:eq(0)'), this.model.get('tweenAnimDuration'), { delay: .1, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
-			TweenMax.to( this.$el.find('.content ul.love'), this.model.get('tweenAnimDuration'), { delay: .2, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
+			TweenMax.to( this.$el.find('.content ul.love'), this.model.get('tweenAnimDuration'), { delay: .2, opacity: 1, scale: 1, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
 			_liDelay = .2;
 			_.each( this.$el.find('.content ul.love li'), _.bind(function(li) {
-				TweenMax.set( li, { rotationX: 0 } );
-				TweenMax.to( li, this.model.get('tweenAnimDuration'), { delay: _liDelay += .1, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
+				TweenMax.set( li, { rotationX: 0, z: 1 } );
+				TweenMax.to( li, this.model.get('tweenAnimDuration'), { delay: _liDelay += .1, opacity: 1, scale: 1, y: 0, z: 1, rotationX: 0, ease: Expo.easeInOut } );
 			}, this) );
 			TweenMax.to( this.$el.find('.content h2:eq(1)'), this.model.get('tweenAnimDuration'), { delay: 1, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
 			TweenMax.to( this.$el.find('.content ul.skills'), this.model.get('tweenAnimDuration'), { delay: 1.4, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
