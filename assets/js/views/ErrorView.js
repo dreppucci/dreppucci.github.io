@@ -22,11 +22,11 @@ define([
 			TweenMax.to( this.$el.find('.content h2'), this.model.get('tweenAnimDuration'), { delay: .1, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
 
 			TweenMax.to( this.$el.find('.content p'), this.model.get('tweenAnimDuration'), { delay: .2, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
-			TweenMax.to( this.$el.find('.content ul'), this.model.get('tweenAnimDuration'), { delay: .3, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
+			TweenMax.to( this.$el.find('.content ul'), this.model.get('tweenAnimDuration'), { delay: .3, opacity: 1, scale: 1, y: 0, rotationX: 0, ease: Expo.easeInOut } );
 			_liDelay = .3;
 			_.each( this.$el.find('.content ul li'), _.bind(function(li) {
 				TweenMax.set( li, { rotationX: 0 } );
-				TweenMax.to( li, this.model.get('tweenAnimDuration'), { delay: _liDelay += .1, opacity: 1, scale: 1, perspective: 200, y: 0, z: .1, rotationX: 0, ease: Expo.easeInOut } );
+				TweenMax.to( li, this.model.get('tweenAnimDuration'), { delay: _liDelay += .1, opacity: 1, scale: 1, y: 0, rotationX: 0, ease: Expo.easeInOut } );
 			}, this) );
 		}
 
