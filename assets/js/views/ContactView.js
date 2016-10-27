@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'views/PageView',
-  'text!../../../contact/index.html'
+  'text!../../../contact/index.html?v=2'
 
 ], function ($, _, Backbone, PageView, ContactTemplate) {
 	

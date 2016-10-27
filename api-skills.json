@@ -5,6 +5,9 @@ permalink: /api/skills
 {
 	"data": [
 		{
+			"skill": "project management"
+		},
+		{
 			"skill": "team management"
 		},
 		{
@@ -14,19 +17,19 @@ permalink: /api/skills
 			"skill": "analysis and benchmark of competitors"
 		},
 		{
+			"skill": "user centered design"
+		},
+		{
 			"skill": "front-end development"
 		},
 		{
-			"skill": "accessibility and usability"
+			"skill": "seo"
 		},
 		{
-			"skill": "server-side integration consulting"
+			"skill": "social media marketing"
 		},
 		{
-			"skill": "cloud web application management"
-		},
-		{
-			"skill": "provide the best technical solution"
+			"skill": "cloudops"
 		}
 	]
 }
