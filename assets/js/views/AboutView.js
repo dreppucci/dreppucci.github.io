@@ -4,7 +4,7 @@ define([
   'backbone',
   'views/PageView',
   'collections/SkillsCollection',
-  'text!../../../about/index.html?v=2'
+  'text!../../../about/index.html?v=1.1'
 
 ], function ($, _, Backbone, PageView, SkillsCollection, AboutTemplate) {
 	
