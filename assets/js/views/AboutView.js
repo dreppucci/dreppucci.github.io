@@ -25,8 +25,6 @@ define([
 			this.skillsList = new SkillsCollection();
 			this.skillsList.fetch({
 				success: function(c, r) {
-					console.log('data loaded', r);
-
 					window.ga('send', 'event', 'SkillsList', 'Loaded' );
 				},
 				error: function(c, r) {

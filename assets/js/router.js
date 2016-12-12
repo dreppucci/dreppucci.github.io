@@ -45,8 +45,6 @@ define([
 				}
 			});
 
-			this.initializeGA();
-
 			this.mainModel = new MainModel();
 			this.mainView = new MainView({ model: this.mainModel });
 			this.pageView = new PageView();
@@ -67,16 +65,6 @@ define([
 			$(window).on('resize', _.bind(this.updateWinSize, this) );
 
 			_.extend(this.events, Router.prototype.events);
-		},
-
-		initializeGA : function() {
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-			window.ga('create', 'UA-73037711-1', 'auto');
-			window.ga('send', 'pageview');
 		},
 
 		getHome : function() {

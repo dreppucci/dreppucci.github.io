@@ -16,7 +16,7 @@ define([
 			'current': null,
 			'prev': null,
 			'title': null,
-			'defaultTitle': ' | Davide Reppucci | Team leader, technical project manager, front-end developer',
+			'defaultTitle': ' | Davide Reppucci | Team Leader - Senior Front-End Developer',
 			'tweenAnimDuration': 1.5
 		},
 
