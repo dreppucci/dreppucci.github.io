@@ -2,7 +2,7 @@
 layout: page
 title: Home
 permalink: /home/
-description: Davide Reppucci is a technical team leader and senior front-end developer from Italy with 10 years of experience.
+description: Davide Reppucci is a chapter lead and technical lead developer from Italy with more than 10 years of experience.
 ---
 
 <section class="page-view home-view">
