@@ -22,7 +22,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastimage (1.8.1)
       addressable (~> 2.3, >= 2.3.5)
-    ffi (1.9.10)
+    ffi (1.11.1)
     gemoji (2.1.0)
     github-pages (45)
       RedCloth (= 4.2.9)
