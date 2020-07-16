@@ -2,14 +2,14 @@
 layout: page
 title: Home
 permalink: /home/
-description: Davide Reppucci is a chapter lead and technical lead developer from Italy with more than 10 years of experience.
+description: Davide Reppucci is a technical project manager and delivery lead from Italy with more than 13 years of experience.
 ---
 
 <section class="page-view home-view">
 	<div class="content">
 		<h1>Hello!</h1>
 		<h2>I'm Davide Reppucci</h2>
-		<h3>I'm a <strong>chapter lead<br /> and lead developer</strong><br /> from Italy.</h3>
+		<h3>I'm a <strong>technical project manager<br /> and delivery lead</strong><br /> from Italy.</h3>
 		<p><span>Being web addicted, I’ve made a professional career to enter it</span> <span>with creativity, innovation and wide predisposition to curiosity,</span> <span>which give me the opportunity to approach to new technologies and methodologies with agility.</span></p>
 		<p>So feel free to take a tour:</p>
 		<ul>
